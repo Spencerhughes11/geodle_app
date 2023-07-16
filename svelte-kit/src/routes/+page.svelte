@@ -79,44 +79,51 @@
       <!-- <select id="countryDropdown"></select> -->
     <!--  feedback boxes -->
     
+    <div class="headers-wrapper">
+        <p class='header'>NAME</p>
+        <p class='header'>HEMISPHERE</p>
+        <p class='header'>CONTINENT</p>
+        <p class='header'>AREA</p>
+        <p class='header'>POPULATION</p>
+    </div> 
     {#each guessHolder as guess}
         {#if guessCount > 0}
             <div class='feedback-wrapper'>
                 <div id='nameBox'>
-                    <h3 class='header'>NAME</h3>
-                        <div class='feedbackBox'>
+                    <!-- <h3 class='header'>NAME</h3> -->
+                        <div class='feedback-box'>
                             <Box --color={letterColor}>
                                 <p>{guess.toUpperCase()}</p>
                             </Box>
                         </div>
                     </div>
                 <div id='hemiBox'>
-                    <h3 class='header'>HEMISPHERE</h3>
-                        <div class='feedbackBox'>
+                    <!-- <h3 class='header'>HEMISPHERE</h3> -->
+                        <div class='feedback-box'>
                             <Box --color={hemiColor}>
                                 <p>{guessHemi}</p>
                             </Box>
                         </div>
                 </div>
                 <div id='continentBox'>
-                    <h3 class='header'>CONTINENT</h3>
-                        <div class='feedbackBox'>
+                    <!-- <h3 class='header'>CONTINENT</h3> -->
+                        <div class='feedback-box'>
                             <Box --color={contColor}>
                                 <p>{guessCont}</p>
                             </Box>
                         </div> 
                 </div>
                 <div id='areaBox'>
-                    <h3 class='header'>AREA (KM^2)</h3>
-                        <div class='feedbackBox'>
+                    <!-- <h3 class='header'>AREA (KM^2)</h3> -->
+                        <div class='feedback-box'>
                             <Box --color={areaColor} >
                                 <p>{guessArea}</p>
                             </Box>
                         </div>  
                 </div>
                 <div id='popBox'>
-                    <h3 class='header'>POPULATION</h3>
-                        <div class='feedbackBox'>
+                    <!-- <h3 class='header'>POPULATION</h3> -->
+                        <div class='feedback-box'>
                             <Box --color={popColor}>
                                 <p>{guessPop}</p>
                             </Box>
@@ -137,7 +144,7 @@
    
   h1{
     color: antiquewhite;
-    font-size: 70px;
+    font-size: 50px;
   }
   
   .input{
@@ -159,19 +166,47 @@
   #guessHolder {
     color: antiquewhite;
   }
+/*   
+  .wrapper{
+    display: flexbox;
+    align-items: center;
+    justify-content: center;
+    width: 75%;
+    margin: auto
+  } */
   
   .feedback-wrapper{
     display: grid;
-    max-width: 100%;
+    width: 55%;
+    margin: auto;
     align-items: center;
     justify-content: center;
     grid-auto-columns: 1fr;
-
   }
-  .header{
-    position: static;
-    color: antiquewhite;
 
+  .headers-wrapper{
+    display: grid;
+    width: 55%;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    grid-auto-columns: 1fr;
+  }
+  
+  .header{
+    font-size: 18px;
+    color: antiquewhite;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    grid-row: 1 / span 12;
+    height: 25px
+  }
+
+  .feedback-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
  
   p{
@@ -221,7 +256,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 30p;
+    height: 100px;
   }
   
   #showAnswer {
