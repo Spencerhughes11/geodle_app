@@ -1,0 +1,32 @@
+body{
+    background-color: #00064B;
+    text-align: center;
+
+}
+h1{
+  color: antiquewhite;
+  font-size: 70px;
+}
+
+#enter {
+  background-color: antiquewhite;
+  cursor: pointer;
+
+}
+
+#countryDropdown {
+  background-color: antiquewhite;
+  cursor: pointer;
+}
+
+#guessHolder {
+  color: antiquewhite;
+}
+
+body{
+}
+
+.button {
+  float: right;
+  align-items: left;
+}

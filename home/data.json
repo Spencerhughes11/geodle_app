@@ -1,0 +1,1116 @@
+{
+  "China": {
+   "population": "1,439,323,776",
+   "area": "9,388,211",
+   "hemisphere": "N",
+   "continent": "Asia"
+  },
+
+     "India": {
+   "population": "1,380,004,385",
+   "area": "2,973,190",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "United States": {
+   "population": "331,002,651",
+   "area": "9,147,420",
+   "hemisphere": "N",
+   "continent": "North America"
+     },
+
+     "Indonesia": {
+   "population": "273,523,615",
+   "area": "1,811,570",
+   "hemisphere": "B",
+   "continent": "Asia"
+     },
+
+     "Pakistan": {
+   "population": "220,892,340",
+   "area": "770,880",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Brazil": {
+   "population": "212,559,417",
+   "area": "8,358,140",
+   "hemisphere": "B",
+   "continent": "South America"
+     },
+
+     "Nigeria": {
+   "population": "206,139,589",
+   "area": "910,770",
+   "hemisphere": "N",
+   "continent": "Africa"
+     },
+
+     "Bangladesh": {
+   "population": "164,689,383",
+   "area": "130,170",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Russia": {
+   "population": "145,934,462",
+   "area": "16,376,870",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Mexico": {
+   "population": "128,932,753",
+   "area": "1,943,950",
+   "hemisphere": "N",
+   "continent": "North America"
+     },
+
+     "Japan": {
+   "population": "126,476,461",
+   "area": "364,555",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Ethiopia": {
+   "population": "114,963,588",
+   "area": "1,000,000",
+   "hemisphere": "N",
+   "continent": "Africa"
+     },
+
+     "Philippines": {
+   "population": "109,581,078",
+   "area": "298,170",
+   "hemisphere": "B",
+   "continent": "Asia"
+     },
+
+     "Egypt": {
+   "population": "102,334,404",
+   "area": "995,450",
+   "hemisphere": "N",
+   "continent": "Africa"
+     },
+
+     "Vietnam": {
+   "population": "97,338,579",
+   "area": "310,070",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Democratic Republic of the Congo": {
+   "population": "89,561,403",
+   "area": "2,267,050",
+   "hemisphere": "N",
+   "continent": "Africa"
+     },
+
+     "Turkey": {
+   "population": "84,339,067",
+   "area": "769,630",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Iran": {
+   "population": "83,992,949",
+   "area": "1,628,550",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Germany": {
+   "population": "83,783,942",
+   "area": "348,560",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Thailand": {
+   "population": "69,799,978",
+   "area": "510,890",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "United Kingdom": {
+   "population": "67,886,011",
+   "area": "241,930",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "France": {
+   "population": "65,273,511",
+   "area": "547,557",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Italy": {
+   "population": "60,461,826",
+   "area": "294,140",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Tanzania": {
+   "population": "59,734,218",
+   "area": "885,800",
+   "hemisphere": "S",
+   "continent": "Africa"
+     },
+
+     "South Africa": {
+   "population": "59,308,690",
+   "area": "1,213,090",
+   "hemisphere": "S",
+   "continent": "Africa"
+     },
+
+     "Myanmar": {
+   "population": "54,409,800",
+   "area": "653,290",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Kenya": {
+   "population": "53,771,296",
+   "area": "569,140",
+   "hemisphere": "B",
+   "continent": "Africa"
+     },
+
+     "South Korea": {
+   "population": "51,269,185",
+   "area": "97,230",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Colombia": {
+   "population": "50,882,891",
+   "area": "1,109,500",
+   "hemisphere": "B",
+   "continent": "South America"
+     },
+
+     "Spain": {
+   "population": "46,754,778",
+   "area": "498,800",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Uganda": {
+   "population": "45,741,007",
+   "area": "199,810",
+   "hemisphere": "B",
+   "continent": "Africa"
+     },
+
+     "Argentina": {
+   "population": "45,195,774",
+   "area": "2,736,690",
+   "hemisphere": "S",
+   "continent": "South America"
+     },
+
+     "Algeria": {
+   "population": "43,851,044",
+   "area": "2,381,740",
+   "hemisphere": "N",
+   "continent": "Africa"
+     },
+
+     "Sudan": {
+   "population": "43,849,260",
+   "area": "1,765,048",
+   "hemisphere": "N",
+   "continent": "Africa"
+     },
+
+     "Ukraine": {
+   "population": "43,733,762",
+   "area": "579,320",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Iraq": {
+   "population": "40,222,493",
+   "area": "434,320",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Afghanistan": {
+   "population": "38,928,346",
+   "area": "652,860",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Poland": {
+   "population": "37,846,611",
+   "area": "306,230",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Canada": {
+   "population": "37,742,154",
+   "area": "9,093,510",
+   "hemisphere": "N",
+   "continent": "North America"
+     },
+
+     "Morocco": {
+   "population": "36,910,560",
+   "area": "446,300",
+   "hemisphere": "N",
+   "continent": "Africa"
+     },
+
+     "Saudi Arabia": {
+   "population": "34,813,871",
+   "area": "2,149,690",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Uzbekistan": {
+   "population": "33,469,203",
+   "area": "425,400",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Peru": {
+   "population": "32,971,854",
+   "area": "1,280,000",
+   "hemisphere": "S",
+   "continent": "South America"
+     },
+
+     "Angola": {
+   "population": "32,866,272",
+   "area": "1,246,700",
+   "hemisphere": "S",
+   "continent": "Africa"
+     },
+
+     "Malaysia": {
+   "population": "32,365,999",
+   "area": "328,550",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Mozambique": {
+   "population": "31,255,435",
+   "area": "786,380",
+   "hemisphere": "S",
+   "continent": "Africa"
+     },
+
+     "Ghana": {
+   "population": "31,072,940",
+   "area": "227,540",
+   "hemisphere": "N",
+   "continent": "Africa"
+     },
+
+     "Yemen": {
+   "population": "29,825,964",
+   "area": "527,970",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Nepal": {
+   "population": "29,136,808",
+   "area": "143,350",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Venezuela": {
+   "population": "28,435,940",
+   "area": "882,050",
+   "hemisphere": "N",
+   "continent": "South America"
+     },
+
+     "Madagascar": {
+   "population": "27,691,018",
+   "area": "581,795",
+   "hemisphere": "S",
+   "continent": "Africa"
+     },
+
+     "Cameroon": {
+   "population": "26,545,863",
+   "area": "472,710",
+   "hemisphere": "N",
+   "continent": "Africa"
+     },
+
+     "Côte d'Ivoire": {
+   "population": "26,378,274",
+   "area": "318,000",
+   "hemisphere": "N",
+   "continent": "Africa"
+     },
+
+     "North Korea": {
+   "population": "25,778,816",
+   "area": "120,410",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Australia": {
+   "population": "25,499,884",
+   "area": "7,682,300",
+   "hemisphere": "S",
+   "continent": "Oceania"
+     },
+
+     "Niger": {
+   "population": "24,206,644",
+   "area": "1,266,700",
+   "hemisphere": "N",
+   "continent": "Africa"
+     },
+
+     "Taiwan": {
+   "population": "23,816,775",
+   "area": "35,410",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Sri Lanka": {
+   "population": "21,413,249",
+   "area": "62,710",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+  
+     "Mali": {
+   "population": "20,250,833",
+   "area": "1,220,190",
+   "hemisphere": "N",
+   "continent": "Africa"
+     },
+
+     "Romania": {
+   "population": "19,237,691",
+   "area": "230,170",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Malawi": {
+   "population": "19,129,952",
+   "area": "94,280",
+   "hemisphere": "S",
+   "continent": "Africa"
+     },
+
+     "Chile": {
+   "population": "19,116,201",
+   "area": "743,532",
+   "hemisphere": "S",
+   "continent": "South America"
+     },
+
+     "Kazakhstan": {
+   "population": "18,776,707",
+   "area": "2,699,700",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Zambia": {
+   "population": "18,383,955",
+   "area": "743,390",
+   "hemisphere": "S",
+   "continent": "Africa"
+     },
+
+     "Guatemala": {
+   "population": "17,915,568",
+   "area": "107,160",
+   "hemisphere": "N",
+   "continent": "North America"
+     },
+
+     "Ecuador": {
+   "population": "17,643,054",
+   "area": "248,360",
+   "hemisphere": "N",
+   "continent": "South America"
+     },
+
+     "Syria": {
+   "population": "17,500,658",
+   "area": "183,630",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Netherlands": {
+   "population": "17,134,872",
+   "area": "33,720",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Senegal": {
+   "population": "16,743,927",
+   "area": "192,530",
+   "hemisphere": "N",
+   "continent": "Africa"
+     },
+
+     "Cambodia": {
+   "population": "16,718,965",
+   "area": "176,520",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Chad": {
+   "population": "16,425,864",
+   "area": "1,259,200",
+   "hemisphere": "N",
+   "continent": "Africa"
+     },
+
+     "Somalia": {
+   "population": "15,893,222",
+   "area": "627,340",
+   "hemisphere": "B",
+   "continent": "Africa"
+     },
+
+     "Zimbabwe": {
+   "population": "14,862,924",
+   "area": "386,850",
+   "hemisphere": "S",
+   "continent": "Africa"
+     },
+
+     "Guinea": {
+   "population": "13,132,795",
+   "area": "245,720",
+   "hemisphere": "N",
+   "continent": "Africa"
+     },
+
+     "Rwanda": {
+   "population": "12,952,218",
+   "area": "24,670",
+   "hemisphere": "S",
+   "continent": "Africa"
+     },
+
+     "Tunisia": {
+   "population": "11,818,619",
+   "area": "155,360",
+   "hemisphere": "N",
+   "continent": "Africa"
+     },
+
+     "Bolivia": {
+   "population": "11,673,021",
+   "area": "1,083,300",
+   "hemisphere": "S",
+   "continent": "South America"
+     },
+
+     "Belgium": {
+   "population": "11,589,623",
+   "area": "30,280",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Haiti": {
+   "population": "11,402,528",
+   "area": "27,560",
+   "hemisphere": "N",
+   "continent": "North America"
+     },
+
+     "Cuba": {
+   "population": "11,326,616",
+   "area": "106,440",
+   "hemisphere": "N",
+   "continent": "North America"
+     },
+
+     "South Sudan": {
+   "population": "11,193,725",
+   "area": "610,952",
+   "hemisphere": "N",
+   "continent": "Africa"
+     },
+
+     "Dominican Republic": {
+   "population": "10,847,910",
+   "area": "48,320",
+   "hemisphere": "N",
+   "continent": "North America"
+     },
+
+     "Czech Republic": {
+   "population": "10,708,981",
+   "area": "77,240",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Greece": {
+   "population": "10,423,054",
+   "area": "128,900",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Jordan": {
+   "population": "10,203,134",
+   "area": "88,780",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Portugal": {
+   "population": "10,196,709",
+   "area": "91,590",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Azerbaijan": {
+   "population": "10,139,177",
+   "area": "82,658",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Sweden": {
+   "population": "10,099,265",
+   "area": "410,340",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Honduras": {
+   "population": "9,904,607",
+   "area": "111,890",
+   "hemisphere": "N",
+   "continent": "North America"
+     },
+
+     "United Arab Emirates": {
+   "population": "9,890,402",
+   "area": "83,600",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Hungary": {
+   "population": "9,660,351",
+   "area": "90,530",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Tajikistan": {
+   "population": "9,537,645",
+   "area": "139,960",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Belarus": {
+   "population": "9,449,323",
+   "area": "202,910",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Austria": {
+   "population": "9,006,398",
+   "area": "82,409",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Papua New Guinea": {
+   "population": "8,947,024",
+   "area": "452,860",
+   "hemisphere": "S",
+   "continent": "Oceania"
+     },
+
+     "Serbia": {
+   "population": "8,737,371",
+   "area": "87,460",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Israel": {
+   "population": "8,655,535",
+   "area": "21,640",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Switzerland": {
+   "population": "8,654,622",
+   "area": "39,516",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Sierra Leone": {
+   "population": "7,976,983",
+   "area": "72,180",
+   "hemisphere": "N",
+   "continent": "Africa"
+     },
+
+     "Hong Kong": {
+   "population": "7,496,981",
+   "area": "1,050",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Laos": {
+   "population": "7,275,560",
+   "area": "230,800",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Paraguay": {
+   "population": "7,132,538",
+   "area": "397,300",
+   "hemisphere": "S",
+   "continent": "South America"
+     },
+
+     "Bulgaria": {
+   "population": "6,948,445",
+   "area": "108,560",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Libya": {
+   "population": "6,871,292",
+   "area": "1,759,540",
+   "hemisphere": "N",
+   "continent": "Africa"
+     },
+
+     "Lebanon": {
+   "population": "6,825,445",
+   "area": "10,230",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Nicaragua": {
+   "population": "6,624,554",
+   "area": "120,340",
+   "hemisphere": "N",
+   "continent": "North America"
+     },
+
+     "Kyrgyzstan": {
+   "population": "6,524,195",
+   "area": "191,800",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "El Salvador": {
+   "population": "6,486,205",
+   "area": "20,720",
+   "hemisphere": "N",
+   "continent": "North America"
+     },
+
+     "Turkmenistan": {
+   "population": "6,031,200",
+   "area": "469,930",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Singapore": {
+   "population": "5,850,342",
+   "area": "700",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Denmark": {
+   "population": "5,792,202",
+   "area": "42,430",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Finland": {
+   "population": "5,540,720",
+   "area": "303,890",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Congo": {
+   "population": "5,518,087",
+   "area": "341,500",
+   "hemisphere": "B",
+   "continent": "Africa"
+     },
+
+     "Slovakia": {
+   "population": "5,459,642",
+   "area": "48,088",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Norway": {
+   "population": "5,421,241",
+   "area": "365,268",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Oman": {
+   "population": "5,106,626",
+   "area": "309,500",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Palestine": {
+   "population": "5,101,414",
+   "area": "6,020",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Costa Rica": {
+   "population": "5,094,118",
+   "area": "51,060",
+   "hemisphere": "N",
+   "continent": "North America"
+     },
+
+     "Liberia": {
+   "population": "5,057,681",
+   "area": "96,320",
+   "hemisphere": "N",
+   "continent": "Africa"
+     },
+
+     "Ireland": {
+   "population": "4,937,786",
+   "area": "68,890",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "New Zealand": {
+   "population": "4,822,233",
+   "area": "263,310",
+   "hemisphere": "S",
+   "continent": "Oceania"
+     },
+
+     "Panama": {
+   "population": "4,314,767",
+   "area": "74,340",
+   "hemisphere": "N",
+   "continent": "North America"
+     },
+
+     "Kuwait": {
+   "population": "4,270,571",
+   "area": "17,820",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Croatia": {
+   "population": "4,105,267",
+   "area": "55,960",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Georgia": {
+   "population": "3,989,167",
+   "area": "69,490",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Eritrea": {
+   "population": "3,546,421",
+   "area": "101,000",
+   "hemisphere": "N",
+   "continent": "Africa"
+     },
+
+     "Uruguay": {
+   "population": "3,473,730",
+   "area": "175,020",
+   "hemisphere": "S",
+   "continent": "South America"
+     },
+
+     "Bosnia and Herzegovina": {
+   "population": "3,280,819",
+   "area": "51,000",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Mongolia": {
+   "population": "3,278,290",
+   "area": "1,553,560",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Armenia": {
+   "population": "2,963,243",
+   "area": "28,470",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Jamaica": {
+   "population": "2,961,167",
+   "area": "10,830",
+   "hemisphere": "N",
+   "continent": "North America"
+     },
+
+     "Qatar": {
+   "population": "2,881,053",
+   "area": "11,610",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Albania": {
+   "population": "2,877,797",
+   "area": "27,400",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Puerto Rico": {
+   "population": "2,860,853",
+   "area": "8,870",
+   "hemisphere": "N",
+   "continent": "North America"
+     },
+
+     "Lithuania": {
+   "population": "2,722,289",
+   "area": "62,674",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Gambia": {
+   "population": "2,416,668",
+   "area": "10,120",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Botswana": {
+   "population": "2,351,627",
+   "area": "566,730",
+   "hemisphere": "S",
+   "continent": "Africa"
+     },
+
+     "Gabon": {
+   "population": "2,225,734",
+   "area": "257,670",
+   "hemisphere": "B",
+   "continent": "Africa"
+     },
+
+     "Lesotho": {
+   "population": "2,142,249",
+   "area": "30,360",
+   "hemisphere": "S",
+   "continent": "Africa"
+     },
+
+     "Slovenia": {
+   "population": "2,078,938",
+   "area": "20,140",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Equatorial Guinea": {
+   "population": "1,402,985",
+   "area": "28,050",
+   "hemisphere": "N",
+   "continent": "Africa"
+     },
+
+     "Trinidad and Tobago": {
+   "population": "1,399,488",
+   "area": "5,130",
+   "hemisphere": "N",
+   "continent": "North America"
+     },
+
+     "Estonia": {
+   "population": "1,326,535",
+   "area": "42,390",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Fiji": {
+   "population": "896,445",
+   "area": "18,270",
+   "hemisphere": "S",
+   "continent": "Oceania"
+     },
+
+     "Guyana": {
+   "population": "786,552",
+   "area": "196,850",
+   "hemisphere": "N",
+   "continent": "South America"
+     },
+
+     "Montenegro": {
+   "population": "628,066",
+   "area": "13,450",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Luxembourg": {
+   "population": "625,978",
+   "area": "2,590",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Suriname": {
+   "population": "586,632",
+   "area": "156,000",
+   "hemisphere": "N",
+   "continent": "South America"
+     },
+
+     "Maldives": {
+   "population": "540,544",
+   "area": "300",
+   "hemisphere": "N",
+   "continent": "Asia"
+     },
+
+     "Belize": {
+   "population": "397,628",
+   "area": "22,810",
+   "hemisphere": "N",
+   "continent": "North America"
+     },
+
+     "Bahamas": {
+   "population": "393,244",
+   "area": "10,010",
+   "hemisphere": "N",
+   "continent": "North America"
+     },
+
+     "Iceland": {
+   "population": "341,243",
+   "area": "100,250",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "French Guiana": {
+   "population": "298,682",
+   "area": "82,200",
+   "hemisphere": "N",
+   "continent": "South America"
+     },
+
+     "Antigua and Barbuda": {
+   "population": "97,929",
+   "area": "440",
+   "hemisphere": "N",
+   "continent": "North America"
+     },
+
+     "Andorra": {
+   "population": "77,265",
+   "area": "470",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Dominica": {
+   "population": "71,986",
+   "area": "750",
+   "hemisphere": "N",
+   "continent": "North America"
+     },
+
+     "Greenland": {
+   "population": "56,770",
+   "area": "410,450",
+   "hemisphere": "N",
+   "continent": "North America"
+     },
+
+
+     "Monaco": {
+   "population": "39,242",
+   "area": "1",
+   "hemisphere": "N",
+   "continent": "Europe"
+     },
+
+     "Liechtenstein": {
+   "population": "38,128",
+   "area": "160",
+   "hemisphere": "N",
+   "continent": "Europe"
+     }
+
+}
