@@ -1,13 +1,14 @@
 <script>
     import { onMount } from 'svelte';
+    import Box from '../lib/Box.svelte';
 
     $: guess = ''
 
-    let all_data = {'feedback': {'letter': 'grey', 'hemisphere': 'grey', 
+    let all_data = {'feedback': {'letter': 'grey', 'hemisphere': 'green', 
                     'continent': 'yellow', 'area': 'grey', 'area_higher_lower': 'lower', 
                     'population': 'yellow', 'pop_higher_lower': 'lower'}, 
         
-                    'guess_data': {'guess': guess, 'letter': 'C', 'hemisphere': 'B', 'continent': 'Africa', 
+                    'guess_data': {'guess': guess, 'letter': 'C', 'hemisphere': 'N', 'continent': 'Africa', 
                         'area': '341,500', 'population': '5,518,087'}}     
     let guessCount = 1
 
@@ -15,6 +16,12 @@
     $: guessCont = all_data.guess_data.continent
     $: guessArea = all_data.guess_data.area
     $: guessPop = all_data.guess_data.population
+
+    $: letterColor = all_data.feedback.letter
+    $: hemiColor = all_data.feedback.hemisphere
+    $: contColor = all_data.feedback.continent
+    $: areaColor = all_data.feedback.area
+    $: popColor = all_data.feedback.population
 
     /*          data
         {'feedback': {'letter': 'grey', 'hemisphere': 'grey', 
@@ -72,34 +79,44 @@
     {#if guessCount > 0}
         <div class='feedback-wrapper'>
             <div id='nameBox'>
-                <p class='header'>NAME</p>
-                <div class='feedbackBox'>
-                    <p>{guess}</p>
-                </div>
+                <h3 class='header'>NAME</h3>
+                    <div class='feedbackBox'>
+                        <Box --color={letterColor}>
+                            <span>{guess}</span>
+                        </Box>
+                    </div>
             </div>
             <div id='hemiBox'>
-                <p class='header'>HEMISPHERE</p>
-                <div class='feedbackBox'>
-                    <p>{guessHemi}</p>
-                </div>
+                <h3 class='header'>HEMISPHERE</h3>
+                    <div class='feedbackBox'>
+                        <Box --color={hemiColor}>
+                            <p>{guessHemi}</p>
+                        </Box>
+                    </div>
             </div>
             <div id='continentBox'>
-                <p class='header'>CONTINENT</p>
-                <div class='feedbackBox'>
-                    <p>{guessCont}</p>
-                </div>
+                <h3 class='header'>CONTINENT</h3>
+                    <div class='feedbackBox'>
+                        <Box --color={contColor}>
+                            <p>{guessCont}</p>
+                        </Box>
+                    </div> 
             </div>
             <div id='areaBox'>
-                <p class='header'>AREA (KM^2)</p>
-                <div class='feedbackBox'>
-                    <p>{guessArea}</p>
-                </div>
+                <h3 class='header'>AREA (KM^2)</h3>
+                    <div class='feedbackBox'>
+                        <Box --color={areaColor} >
+                            <p>{guessArea}</p>
+                        </Box>
+                    </div>  
             </div>
             <div id='popBox'>
-                <p class='header'>POPULATION</p>
-                <div class='feedbackBox'>
-                    <p>{guessPop}</p>
-                </div>
+                <h3 class='header'>POPULATION</h3>
+                    <div class='feedbackBox'>
+                        <Box --color={popColor}>
+                            <p>{guessPop}</p>
+                        </Box>
+                    </div> 
             </div>
         </div>
     {/if}    
@@ -141,13 +158,22 @@
   
   .feedback-wrapper{
     display: grid;
+    max-width: 100%;
     align-items: center;
     justify-content: center;
-    color: antiquewhite;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-auto-columns: 1fr;
+
   }
   .header{
     position: static;
+    color: antiquewhite;
+
+  }
+ 
+  p{
+    margin: auto;
+    width: 50%;
+    padding: 30px;
   }
 
   #nameBox{
