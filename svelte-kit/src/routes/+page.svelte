@@ -4,11 +4,11 @@
 
     
 
-    let all_data = {'feedback': {'letter': 'grey', 'hemisphere': 'green', 
+    let all_data = {'feedback': {'letter': 'yellow', 'hemisphere': 'green', 
                     'continent': 'yellow', 'area': 'grey', 'area_higher_lower': 'lower', 
                     'population': 'yellow', 'pop_higher_lower': 'lower'}, 
         
-                    'guess_data': {'guess': '', 'letter': 'C', 'hemisphere': 'N', 'continent': 'Africa', 
+                    'guess_data': {'letter': 'C', 'hemisphere': 'N', 'continent': 'Africa', 
                         'area': '341,500', 'population': '5,518,087'}} ;    
     let guessCount = 0;
 
@@ -79,16 +79,17 @@
       <!-- <select id="countryDropdown"></select> -->
     <!--  feedback boxes -->
     
-    <div class="headers-wrapper">
+    <div class="headers-wrapper gap-1">
         <p class='header'>NAME</p>
         <p class='header'>HEMISPHERE</p>
         <p class='header'>CONTINENT</p>
         <p class='header'>AREA</p>
         <p class='header'>POPULATION</p>
     </div> 
+    <div class="board"></div>
     {#each guessHolder as guess}
         {#if guessCount > 0}
-            <div class='feedback-wrapper'>
+            <div class='feedback-wrapper gap-1'>
                 <div id='nameBox'>
                     <!-- <h3 class='header'>NAME</h3> -->
                         <div class='feedback-box'>
@@ -130,6 +131,7 @@
                         </div> 
                 </div>
             </div>
+        
         {/if}    
     {/each}  
       <div id="guessHolder"></div>
@@ -147,6 +149,17 @@
     font-size: 50px;
   }
   
+  h1:after {
+    content:' ';
+    display:block;
+    border:2px solid #d0d0d0;
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
+    -webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
+    -moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
+}
   .input{
     display: flex;
     align-items: center;
@@ -177,20 +190,26 @@
   
   .feedback-wrapper{
     display: grid;
-    width: 55%;
+    width: 40%;
     margin: auto;
     align-items: center;
     justify-content: center;
     grid-auto-columns: 1fr;
+    /* grid-template-columns: (5,minmax(0,1fr)); */
+  }
+  .gap-1 {
+    column-gap: 7px;
   }
 
   .headers-wrapper{
+    height: 65px;
     display: grid;
-    width: 55%;
+    width: 35%;
     margin: auto;
     align-items: center;
     justify-content: center;
     grid-auto-columns: 1fr;
+    /* grid-template-columns: (5,minmax(0,1fr)); */
   }
   
   .header{
@@ -212,7 +231,8 @@
   p{
     margin: auto;
     width: 50%;
-    padding: 30px;
+    padding: 16px;
+    text-align: center;
   }
 
   #nameBox{
