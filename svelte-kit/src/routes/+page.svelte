@@ -1,62 +1,98 @@
 <script>
     import { onMount } from 'svelte';
     import Box from '../lib/Box.svelte';
+    import { backendURL } from '$lib/urls';
+    
+    // const BASE_URL = `http://${document.location.hostname}/`;
+    // const API_PATH = 'home/';
 
     
 
-    let all_data = {'feedback': {'letter': 'yellow', 'hemisphere': 'green', 
-                    'continent': 'yellow', 'area': 'grey', 'area_higher_lower': 'lower', 
-                    'population': 'yellow', 'pop_higher_lower': 'lower'}, 
-        
-                    'guess_data': {'letter': 'C', 'hemisphere': 'N', 'continent': 'Africa', 
-                        'area': '341,500', 'population': '5,518,087'}} ;    
+    // $: all_data = {'feedback': {'letter': 'grey', 'hemisphere': 'green', 'continent': 'yellow', 'area': 'grey', 
+    // 'area_higher_lower': 'lower', 'population': 'grey', 'pop_higher_lower': 'lower'}, 
+    // 'guess_data': {'letter': 'C', 'hemisphere': 'N', 'continent': 'Asia', 'area': '9,388,211', 'population': '1,439,323,776'}} ;    
     let guessCount = 0;
 
     let guessHolder = [];
 
-    $: guess = ''
-    $: guessHemi = all_data.guess_data.hemisphere;
-    $: guessCont = all_data.guess_data.continent;
-    $: guessArea = all_data.guess_data.area;
-    $: guessPop = all_data.guess_data.population;
+    let all_data = {};
+    let guessHemi;
+    let guessCont;
+    let guessArea;
+    let guessPop;
+    
+    let letterColor;
+    let hemiColor;
+    let contColor;
+    let areaColor;
+    let popColor;
 
-    $: letterColor = all_data.feedback.letter;
-    $: hemiColor = all_data.feedback.hemisphere;
-    $: contColor = all_data.feedback.continent;
-    $: areaColor = all_data.feedback.area;
-    $: popColor = all_data.feedback.population;
+    let guessData;
+    // onMount(async () => {
+    //     fetchData();
+    // })
+    let guess = ''
+    const secretCountry = 'Germany';
+
+    let fetchData = async () => {
+        try {
+            const timeLabel = `Fetching data for ${guess}`
+            console.time(timeLabel);
+
+            const response = await fetch(backendURL(`/?guess=${guess}&secret_country=${secretCountry}`));
+            console.timeEnd(timeLabel); 
+            if (!response.ok) {
+              	throw new Error(`Request failed with status ${response.status}`);
+            }
+            all_data = (await response.json());
+            console.log('All Data: ', all_data)
+
+            guessHemi = all_data.guess_data.hemisphere ? all_data.guess_data.hemisphere : '';
+            guessCont = all_data.guess_data.continent ? all_data.guess_data.continent : '';
+            guessArea = all_data.guess_data.area ? all_data.guess_data.area : '' ;
+            guessPop = all_data.guess_data.population ? all_data.guess_data.population : '';
+
+            letterColor = all_data.feedback.letter ? all_data.feedback.letter : '' ;
+            hemiColor = all_data.feedback.hemisphere ? all_data.feedback.hemisphere : '';
+            contColor = all_data.feedback.continent ? all_data.feedback.continent : '' ;
+            areaColor = all_data.feedback.area ? all_data.feedback.area : '' ;
+            popColor = all_data.feedback.population ? all_data.feedback.population : '' ;
+            guessData = all_data.guess_data
+            // console.log(guessData)
+			guessHolder.push(guess);
+
+			console.log('guessHolder: ', guessHolder)
+			console.log('popColor: ', popColor)
+
+			guessCount++;
+      	
+                    
+        }  catch (error) {
+      console.error('Error:', error);
+    }
+    }
+
 
     
-        let test = () => {
-            if (guessCount < 8){
+    let test = async () => {
+    if (guessCount < 8) {
+        console.log(guess.toLowerCase());
+        console.log(guessData)
+        console.log('All Data: ', all_data);
 
-                console.log(guess.toLowerCase());
-                // guess = guess.toLowerCase();
-                guessCount++;
-                guessHolder.push(guess);
-            } else {
+        guessCount++;
+        guessHolder.push(guess);
+
+    } else {
                 alert("CUM")
             }
-            // fetch('/', {
-            // method: 'GET',
-            // headers: {
-            //     'Content-Type': 'application/json'
-            // },
-            // body: JSON.stringify({ guess: guess })
-            // })
-            // .then(response => response.json())
-            // .then(data => {
-            //     console.log(data);
-            // })
-            // .catch(error => {
-            //     console.error('Error:', error);
-            // });
+            
         };
     
 
     function handleKeydown(event) {
 		if (event.key === 'Enter') {
-            test();
+            fetchData();
         }
 
 	}
@@ -73,7 +109,7 @@
         <div class="input">
             <!-- <form method="POST" action="/"> -->
             <input type="text" id="userGuess" placeholder="Enter country name here: " bind:value={guess} on:keydown={handleKeydown}> <br> 
-            <button id="enter" on:click={test}>Enter</button> 
+            <button id="enter" on:click={fetchData}>Enter</button> 
             <!-- </form>   -->
         </div>
       <!-- <select id="countryDropdown"></select> -->
@@ -86,7 +122,6 @@
         <p class='header'>AREA</p>
         <p class='header'>POPULATION</p>
     </div> 
-    <div class="board"></div>
     {#each guessHolder as guess}
         {#if guessCount > 0}
             <div class='feedback-wrapper gap-1'>

@@ -5,10 +5,11 @@ import string
 import random
 
 class Comparisons():
-    def __init__(self):
+    def __init__(self, secret_country):
         self.df = pd.read_json('data.json')
 
-        self.secret_country = random.choice(self.df.keys())
+        # self.secret_country = random.choice(self.df.keys())
+        self.secret_country = secret_country
 
     @property
     def get_secret_country(self):
@@ -20,8 +21,8 @@ class Comparisons():
             'letter': guess[0].upper(),
             'hemisphere': self.df[guess].hemisphere,
             'continent': self.df[guess].continent,
-            'area': self.df[guess].area,
-            'population': self.df[guess].population,
+            'area': str(self.df[guess].area),
+            'population': str(self.df[guess].population),
         }
 
     # ------------------------------------------------ LETTER COMPARISONS ----------------------------------------------
