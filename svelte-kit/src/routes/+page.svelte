@@ -59,14 +59,25 @@
             popColor = all_data.feedback.population ? all_data.feedback.population : '' ;
             guessData = all_data.guess_data
             // console.log(guessData)
-			guessHolder.push(guess);
-
+			// guessHolder.push(guess);
+			guessHolder.push({
+                guess: guess,
+                guessHemi: guessHemi,
+                guessCont: guessCont,
+                guessArea: guessArea,
+                guessPop: guessPop,
+                letterColor: letterColor,
+                hemiColor: hemiColor,
+                contColor: contColor,
+                areaColor: areaColor,
+                popColor: popColor
+            });
 			console.log('guessHolder: ', guessHolder)
 			console.log('popColor: ', popColor)
 
 			guessCount++;
       	
-                    
+            guess = ''
         }  catch (error) {
       console.error('Error:', error);
     }
@@ -122,46 +133,46 @@
         <p class='header'>AREA</p>
         <p class='header'>POPULATION</p>
     </div> 
-    {#each guessHolder as guess}
+    {#each guessHolder as guessData}
         {#if guessCount > 0}
             <div class='feedback-wrapper gap-1'>
                 <div id='nameBox'>
                     <!-- <h3 class='header'>NAME</h3> -->
                         <div class='feedback-box'>
-                            <Box --color={letterColor}>
-                                <p>{guess.toUpperCase()}</p>
+                            <Box --color={guessData.letterColor}>
+                                <p>{guessData.guess.toUpperCase()}</p>
                             </Box>
                         </div>
                     </div>
                 <div id='hemiBox'>
                     <!-- <h3 class='header'>HEMISPHERE</h3> -->
                         <div class='feedback-box'>
-                            <Box --color={hemiColor}>
-                                <p>{guessHemi}</p>
+                            <Box --color={guessData.hemiColor}>
+                                <p>{guessData.guessHemi}</p>
                             </Box>
                         </div>
                 </div>
                 <div id='continentBox'>
                     <!-- <h3 class='header'>CONTINENT</h3> -->
                         <div class='feedback-box'>
-                            <Box --color={contColor}>
-                                <p>{guessCont}</p>
+                            <Box --color={guessData.contColor}>
+                                <p>{guessData.guessCont}</p>
                             </Box>
                         </div> 
                 </div>
                 <div id='areaBox'>
                     <!-- <h3 class='header'>AREA (KM^2)</h3> -->
                         <div class='feedback-box'>
-                            <Box --color={areaColor} >
-                                <p>{guessArea}</p>
+                            <Box --color={guessData.areaColor} >
+                                <p>{guessData.guessArea}</p>
                             </Box>
                         </div>  
                 </div>
                 <div id='popBox'>
                     <!-- <h3 class='header'>POPULATION</h3> -->
                         <div class='feedback-box'>
-                            <Box --color={popColor}>
-                                <p>{guessPop}</p>
+                            <Box --color={guessData.popColor}>
+                                <p>{guessData.guessPop}</p>
                             </Box>
                         </div> 
                 </div>
