@@ -1,17 +1,26 @@
 <script>
     import { onMount } from 'svelte';
     import Box from '../lib/Box.svelte';
+    import Feedback from '../lib/Feedback.svelte';
     import { backendURL } from '$lib/urls';
+	import data from '../../../data.json';
+	import { json } from '@sveltejs/kit';
+	import countryList  from '../lib/countrylist';
     
-    // const BASE_URL = `http://${document.location.hostname}/`;
-    // const API_PATH = 'home/';
-
-    
-
+	// Dummy Data for test
     // $: all_data = {'feedback': {'letter': 'grey', 'hemisphere': 'green', 'continent': 'yellow', 'area': 'grey', 
     // 'area_higher_lower': 'lower', 'population': 'grey', 'pop_higher_lower': 'lower'}, 
     // 'guess_data': {'letter': 'C', 'hemisphere': 'N', 'continent': 'Asia', 'area': '9,388,211', 'population': '1,439,323,776'}} ;    
-    let guessCount = 0;
+	
+	// -------------------- Random Country Selection --------------------
+	// let generateSecretCountry = () => {
+	const countryNames = Object.keys(data);
+	const randomIndex = Math.floor(Math.random() * countryNames.length);
+	const secretCountry = countryNames[randomIndex];
+	// }
+		// console.log(countryList)
+
+	let guessCount = 0;
 
     let guessHolder = [];
 
@@ -32,73 +41,78 @@
     //     fetchData();
     // })
     let guess = ''
-    const secretCountry = 'Germany';
+    // const secretCountry = 'Germany';
 
     let fetchData = async () => {
-        try {
-            const timeLabel = `Fetching data for ${guess}`
-            console.time(timeLabel);
+		try {
+			const timeLabel = `Fetching data for ${guess}`
+			console.time(timeLabel);
 
-            const response = await fetch(backendURL(`/?guess=${guess}&secret_country=${secretCountry}`));
-            console.timeEnd(timeLabel); 
-            if (!response.ok) {
-              	throw new Error(`Request failed with status ${response.status}`);
-            }
-            all_data = (await response.json());
-            console.log('All Data: ', all_data)
+			const response = await fetch(backendURL(`/?guess=${guess}&secret_country=${secretCountry}`));
+			console.timeEnd(timeLabel); 
+			if (!response.ok) {
+				throw new Error(`Request failed with status ${response.status}`);
+			}
+			all_data = (await response.json());
+			console.log('All Data: ', all_data)
 
-            guessHemi = all_data.guess_data.hemisphere ? all_data.guess_data.hemisphere : '';
-            guessCont = all_data.guess_data.continent ? all_data.guess_data.continent : '';
-            guessArea = all_data.guess_data.area ? all_data.guess_data.area : '' ;
-            guessPop = all_data.guess_data.population ? all_data.guess_data.population : '';
+			guessHemi = all_data.guess_data.hemisphere ? all_data.guess_data.hemisphere : '';
+			guessCont = all_data.guess_data.continent ? all_data.guess_data.continent : '';
+			guessArea = all_data.guess_data.area ? all_data.guess_data.area : '' ;
+			guessPop = all_data.guess_data.population ? all_data.guess_data.population : '';
 
-            letterColor = all_data.feedback.letter ? all_data.feedback.letter : '' ;
-            hemiColor = all_data.feedback.hemisphere ? all_data.feedback.hemisphere : '';
-            contColor = all_data.feedback.continent ? all_data.feedback.continent : '' ;
-            areaColor = all_data.feedback.area ? all_data.feedback.area : '' ;
-            popColor = all_data.feedback.population ? all_data.feedback.population : '' ;
-            guessData = all_data.guess_data
-            // console.log(guessData)
+			letterColor = all_data.feedback.letter ? all_data.feedback.letter : '' ;
+			hemiColor = all_data.feedback.hemisphere ? all_data.feedback.hemisphere : '';
+			contColor = all_data.feedback.continent ? all_data.feedback.continent : '' ;
+			areaColor = all_data.feedback.area ? all_data.feedback.area : '' ;
+			popColor = all_data.feedback.population ? all_data.feedback.population : '' ;
+			guessData = all_data.guess_data
+			// console.log(guessData)
 			// guessHolder.push(guess);
 			guessHolder.push({
-                guess: guess,
-                guessHemi: guessHemi,
-                guessCont: guessCont,
-                guessArea: guessArea,
-                guessPop: guessPop,
-                letterColor: letterColor,
-                hemiColor: hemiColor,
-                contColor: contColor,
-                areaColor: areaColor,
-                popColor: popColor
-            });
+				guess: guess,
+				guessHemi: guessHemi,
+				guessCont: guessCont,
+				guessArea: guessArea,
+				guessPop: guessPop,
+				letterColor: letterColor,
+				hemiColor: hemiColor,
+				contColor: contColor,
+				areaColor: areaColor,
+				popColor: popColor
+			});
 			console.log('guessHolder: ', guessHolder)
-			console.log('popColor: ', popColor)
+			// console.log('popColor: ', popColor)
 
 			guessCount++;
-      	
-            guess = ''
-        }  catch (error) {
-      console.error('Error:', error);
+			console.log('Guess', guess)
+			console.log('Secret country', secretCountry)
+			if (guess == secretCountry){
+				alert(`You've guessed correctly in ${guessCount} tries!`)
+				guess = ''
+				guessHolder = []
+			}
+			guess = ''
+		}  catch (error) {
+	console.error('Error:', error);
+	alert(`'${guess}' not found in database`)				// FIXME: might apply to different error
+	}
+		
     }
-    }
 
+    // TEST for Dummy Data
+    // let test = async () => {
+    // if (guessCount < 8) {
+    //     console.log(guess.toLowerCase());
+    //     console.log(guessData)
+    //     console.log('All Data: ', all_data);
 
-    
-    let test = async () => {
-    if (guessCount < 8) {
-        console.log(guess.toLowerCase());
-        console.log(guessData)
-        console.log('All Data: ', all_data);
+    //     guessCount++;
+    //     guessHolder.push(guess);
 
-        guessCount++;
-        guessHolder.push(guess);
-
-    } else {
-                alert("CUM")
-            }
+    // }
             
-        };
+    //     };
     
 
     function handleKeydown(event) {
@@ -108,18 +122,27 @@
 
 	}
 
+	let showAnswer = () => {
+		alert(`Secret country is ${secretCountry}`);
+	}
+
 </script>
   
   
   <body>
         <div class="showAnswer">
             <h1 class='head'>GEODLE</h1>
-            <button id="showAnswer">Show Answer</button>
+            <button id="showAnswer" on:click={showAnswer}>Show Answer</button>
         </div>
 
         <div class="input">
             <!-- <form method="POST" action="/"> -->
-            <input type="text" id="userGuess" placeholder="Enter country name here: " bind:value={guess} on:keydown={handleKeydown}> <br> 
+            <input list='countries' id="userGuess" placeholder="Enter country name here: " bind:value={guess} on:keydown={handleKeydown} autocapitalize="on"> 
+			<datalist id='countries'>
+				{#each countryList.sort() as country}
+					<option value={country} />
+				{/each}
+			</datalist>
             <button id="enter" on:click={fetchData}>Enter</button> 
             <!-- </form>   -->
         </div>
@@ -136,8 +159,10 @@
     {#each guessHolder as guessData}
         {#if guessCount > 0}
             <div class='feedback-wrapper gap-1'>
+				<!-- <Feedback guessData={guessData}>
+				
+				</Feedback> -->
                 <div id='nameBox'>
-                    <!-- <h3 class='header'>NAME</h3> -->
                         <div class='feedback-box'>
                             <Box --color={guessData.letterColor}>
                                 <p>{guessData.guess.toUpperCase()}</p>
@@ -145,7 +170,6 @@
                         </div>
                     </div>
                 <div id='hemiBox'>
-                    <!-- <h3 class='header'>HEMISPHERE</h3> -->
                         <div class='feedback-box'>
                             <Box --color={guessData.hemiColor}>
                                 <p>{guessData.guessHemi}</p>
@@ -153,7 +177,6 @@
                         </div>
                 </div>
                 <div id='continentBox'>
-                    <!-- <h3 class='header'>CONTINENT</h3> -->
                         <div class='feedback-box'>
                             <Box --color={guessData.contColor}>
                                 <p>{guessData.guessCont}</p>
@@ -161,7 +184,6 @@
                         </div> 
                 </div>
                 <div id='areaBox'>
-                    <!-- <h3 class='header'>AREA (KM^2)</h3> -->
                         <div class='feedback-box'>
                             <Box --color={guessData.areaColor} >
                                 <p>{guessData.guessArea}</p>
@@ -169,7 +191,6 @@
                         </div>  
                 </div>
                 <div id='popBox'>
-                    <!-- <h3 class='header'>POPULATION</h3> -->
                         <div class='feedback-box'>
                             <Box --color={guessData.popColor}>
                                 <p>{guessData.guessPop}</p>
@@ -177,7 +198,6 @@
                         </div> 
                 </div>
             </div>
-        
         {/if}    
     {/each}  
       <div id="guessHolder"></div>

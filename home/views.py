@@ -32,13 +32,16 @@ class Main(View):
             # print(self.compare.get_data(guess))
 
             # Call feedback functions, passing in info from request
-            letter_feedback = self.compare.compare_letter(guess[0].upper())
-            hemisphere_feedback = self.compare.compare_hemi(guess)
-            continent_feedback = self.compare.compare_continent(guess)   
-            area_range = self.compare.compare_area_range(guess)       # color feedback if area is within specified range
-            area_higher_lower = self.compare.area_higher_lower(guess)
-            population_range_color = self.compare.compare_pop_range(guess)      # color feedback if population is within specific range    
-            pop_higher_lower = self.compare.pop_higher_lower(guess)      # color feedback if population is within specific range    
+            if self.compare.valid_guess(guess):
+                letter_feedback = self.compare.compare_letter(guess[0].upper())
+                hemisphere_feedback = self.compare.compare_hemi(guess)
+                continent_feedback = self.compare.compare_continent(guess)   
+                area_range = self.compare.compare_area_range(guess)       # color feedback if area is within specified range
+                area_higher_lower = self.compare.area_higher_lower(guess)
+                population_range_color = self.compare.compare_pop_range(guess)      # color feedback if population is within specific range    
+                pop_higher_lower = self.compare.pop_higher_lower(guess)      # color feedback if population is within specific range    
+            else:
+                return JsonResponse({'Error': 'Country not found in database'})
 
 
             # letter_feedback = self.compare.get_letter_feedback('S')
@@ -69,45 +72,6 @@ class Main(View):
         # return all_data
     
         return JsonResponse(all_data)
-
-    # def process_guess(self, guess):
-        
-    #     # print(self.compare.get_data(guess))
-
-    #     # Call feedback functions, passing in info from request
-    #     letter_feedback = self.compare.compare_letter(guess[0].upper())
-    #     hemisphere_feedback = self.compare.compare_hemi(guess)
-    #     continent_feedback = self.compare.compare_continent(guess)   
-    #     area_range = self.compare.compare_area_range(guess)       # color feedback if area is within specified range
-    #     area_higher_lower = self.compare.area_higher_lower(guess)
-    #     population_range_color = self.compare.compare_pop_range(guess)      # color feedback if population is within specific range    
-    #     pop_higher_lower = self.compare.pop_higher_lower(guess)      # color feedback if population is within specific range    
-
-
-    #     # letter_feedback = self.compare.get_letter_feedback('S')
-    #     # hemisphere_feedback = self.compare.get_hemisphere_feedback('N')
-    #     # continent_feedback = self.compare.get_continent_feedback('South America')   
-    #     # area_feedback = self.compare.get_area_feedback('95000')       
-    #     # population_feedback = self.compare.get_population_feedback('10000000')
-
-
-    #     feedback = {
-    #         'letter': letter_feedback,
-    #         'hemisphere': hemisphere_feedback,
-    #         'continent': continent_feedback,
-    #         'area': area_range,
-    #         'area_higher_lower': area_higher_lower,
-    #         'population': population_range_color,
-    #         'pop_higher_lower': pop_higher_lower,
-
-    #     }
-    #     # print(f'Guess: {guess}: {feedback}') # test
-
-    #     all_data = {
-    #         'feedback': feedback,
-    #         'guess_data': self.compare.get_data(guess)
-    #     }
-    #     return all_data
     
     # def get_secret_country(self):
     #     print(f'Secret: {self.compare.get_secret_country}')

@@ -24,7 +24,10 @@ class Comparisons():
             'area': str(self.df[guess].area),
             'population': str(self.df[guess].population),
         }
-
+    def valid_guess(self, guess):
+        if guess not in self.df.keys():
+            return False
+        return True
     # ------------------------------------------------ LETTER COMPARISONS ----------------------------------------------
     def compare_letter(self, guess_letter):
         """ Returns feedback telling the user if the first letter of the guess is near the first letter of the answer """
