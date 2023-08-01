@@ -14,9 +14,9 @@
 	
 	// -------------------- Random Country Selection --------------------
 	// let generateSecretCountry = () => {
-	const countryNames = Object.keys(data);
-	const randomIndex = Math.floor(Math.random() * countryNames.length);
-	const secretCountry = countryNames[randomIndex];
+	let countryNames = Object.keys(data);
+	let randomIndex = Math.floor(Math.random() * countryNames.length);
+	let secretCountry = countryNames[randomIndex];
 	// }
 		// console.log(countryList)
 
@@ -85,12 +85,15 @@
 			// console.log('popColor: ', popColor)
 
 			guessCount++;
-			console.log('Guess', guess)
-			console.log('Secret country', secretCountry)
+			console.log('Guess:', guess)
+			console.log('Secret country:', secretCountry)
 			if (guess == secretCountry){
 				alert(`You've guessed correctly in ${guessCount} tries!`)
 				guess = ''
 				guessHolder = []
+				randomIndex = Math.floor(Math.random() * countryNames.length);
+			    secretCountry = countryNames[randomIndex];
+
 			}
 			guess = ''
 		}  catch (error) {
@@ -299,6 +302,7 @@
     width: 50%;
     padding: 16px;
     text-align: center;
+	justify-content: center;
   }
 
   #nameBox{
