@@ -22,7 +22,8 @@
 
 	let guessCount = 0;
 
-    let guessHolder = [];
+    let dataHolder = [];
+	let guessedCountries = [];
 
     let all_data = {};
     let guessHemi;
@@ -42,63 +43,78 @@
     // })
     let guess = ''
     // const secretCountry = 'Germany';
+	const territories = ['cayman islands', 'u.s. virgin islands', 'us virgin islands', 
+                    'british virgin islands', 'guam','samoa', 'american samoa',
+                    "samoa", 'turks and caicos', 'bermuda']
 
     let fetchData = async () => {
 		try {
-			const timeLabel = `Fetching data for ${guess}`
-			console.time(timeLabel);
-
-			const response = await fetch(backendURL(`/?guess=${guess}&secret_country=${secretCountry}`));
-			console.timeEnd(timeLabel); 
-			if (!response.ok) {
-				throw new Error(`Request failed with status ${response.status}`);
+			if ( territories.includes(guess.toLowerCase())){
+				alert(`'${guess.toUpperCase()}' is considered a territory`);
 			}
-			all_data = (await response.json());
-			console.log('All Data: ', all_data)
-
-			guessHemi = all_data.guess_data.hemisphere ? all_data.guess_data.hemisphere : '';
-			guessCont = all_data.guess_data.continent ? all_data.guess_data.continent : '';
-			guessArea = all_data.guess_data.area ? all_data.guess_data.area : '' ;
-			guessPop = all_data.guess_data.population ? all_data.guess_data.population : '';
-
-			letterColor = all_data.feedback.letter ? all_data.feedback.letter : '' ;
-			hemiColor = all_data.feedback.hemisphere ? all_data.feedback.hemisphere : '';
-			contColor = all_data.feedback.continent ? all_data.feedback.continent : '' ;
-			areaColor = all_data.feedback.area ? all_data.feedback.area : '' ;
-			popColor = all_data.feedback.population ? all_data.feedback.population : '' ;
-			guessData = all_data.guess_data
-			// console.log(guessData)
-			// guessHolder.push(guess);
-			guessHolder.push({
-				guess: guess,
-				guessHemi: guessHemi,
-				guessCont: guessCont,
-				guessArea: guessArea,
-				guessPop: guessPop,
-				letterColor: letterColor,
-				hemiColor: hemiColor,
-				contColor: contColor,
-				areaColor: areaColor,
-				popColor: popColor
-			});
-			console.log('guessHolder: ', guessHolder)
-			// console.log('popColor: ', popColor)
-
-			guessCount++;
-			console.log('Guess:', guess)
-			console.log('Secret country:', secretCountry)
-			if (guess == secretCountry){
-				alert(`You've guessed correctly in ${guessCount} tries!`)
+			if (guessedCountries.includes(guess.toLowerCase())) {
+				alert(`Already guessed '${guess}'`)
 				guess = ''
-				guessHolder = []
-				randomIndex = Math.floor(Math.random() * countryNames.length);
-			    secretCountry = countryNames[randomIndex];
+			} else {
+				const timeLabel = `Fetching data for ${guess}`
+				guessedCountries.push(guess.toLowerCase());
 
+				console.time(timeLabel);
+
+				const response = await fetch(backendURL(`/?guess=${guess}&secret_country=${secretCountry}`));
+				console.timeEnd(timeLabel); 
+				if (!response.ok) {
+					throw new Error(`Request failed with status ${response.status}`);
+				}
+				all_data = (await response.json());
+				console.log('All Data: ', all_data)
+
+				guessHemi = all_data.guess_data.hemisphere ? all_data.guess_data.hemisphere : '';
+				guessCont = all_data.guess_data.continent ? all_data.guess_data.continent : '';
+				guessArea = all_data.guess_data.area ? all_data.guess_data.area : '' ;
+				guessPop = all_data.guess_data.population ? all_data.guess_data.population : '';
+
+				letterColor = all_data.feedback.letter ? all_data.feedback.letter : '' ;
+				hemiColor = all_data.feedback.hemisphere ? all_data.feedback.hemisphere : '';
+				contColor = all_data.feedback.continent ? all_data.feedback.continent : '' ;
+				areaColor = all_data.feedback.area ? all_data.feedback.area : '' ;
+				popColor = all_data.feedback.population ? all_data.feedback.population : '' ;
+				guessData = all_data.guess_data
+				// console.log(guessData)
+				// dataHolder.push(guess);
+				dataHolder.push({
+					guess: guess,
+					guessHemi: guessHemi,
+					guessCont: guessCont,
+					guessArea: guessArea,
+					guessPop: guessPop,
+					letterColor: letterColor,
+					hemiColor: hemiColor,
+					contColor: contColor,
+					areaColor: areaColor,
+					popColor: popColor
+				});
+				console.log('dataHolder: ', dataHolder)
+				// console.log('popColor: ', popColor)
+
+				guessCount++;
+				console.log('Guess:', guess)
+				console.log('Secret country:', secretCountry)
+				if (guess == secretCountry){
+					alert(`You've guessed correctly in ${guessCount} tries!`)
+					guess = ''
+					guessCount = 0
+					dataHolder = []
+					randomIndex = Math.floor(Math.random() * countryNames.length);
+					secretCountry = countryNames[randomIndex];
+
+				} 
+				guess = ''
 			}
-			guess = ''
 		}  catch (error) {
 	console.error('Error:', error);
-	alert(`'${guess}' not found in database`)				// FIXME: might apply to different error
+	if (!territories.includes(guess.toLowerCase()))
+		alert(`'${guess}' not found in database`)				// FIXME: might apply to different error
 	}
 		
     }
@@ -111,7 +127,7 @@
     //     console.log('All Data: ', all_data);
 
     //     guessCount++;
-    //     guessHolder.push(guess);
+    //     dataHolder.push(guess);
 
     // }
             
@@ -159,43 +175,117 @@
         <p class='header'>AREA</p>
         <p class='header'>POPULATION</p>
     </div> 
-    {#each guessHolder as guessData}
+<!-- {#each dataHolder as guessData}
+
+{#each {length : 8} as index}
+	<div class='feedback-wrapper gap-1'>
+		{#if guessCount = 0}
+			<div id='nameBox'>
+					<div class='feedback-box'>
+						<Box >
+						</Box>
+					</div>
+				</div>
+			<div id='hemiBox'>
+					<div class='feedback-box'>
+						<Box>
+						</Box>
+					</div>
+			</div>
+			<div id='continentBox'>
+					<div class='feedback-box'>
+						<Box>
+						</Box>
+					</div> 
+			</div>
+			<div id='areaBox'>
+					<div class='feedback-box'>
+						<Box >
+						</Box>
+					</div>  
+			</div>
+			<div id='popBox'>
+					<div class='feedback-box'>
+						<Box >
+						</Box>
+					</div> 
+			</div>
+		{:else if guessCount == index}
+			<div id='nameBox'>
+				<div class='feedback-box'>
+					<Box --color={guessData.letterColor} filled=true>
+						<p>{guessData.guess.toUpperCase()}</p>
+					</Box>
+				</div>
+			</div>
+			<div id='hemiBox'>
+					<div class='feedback-box'>
+						<Box --color={guessData.hemiColor}>
+							<p>{guessData.guessHemi}</p>
+						</Box>
+					</div>
+			</div>
+			<div id='continentBox'>
+					<div class='feedback-box'>
+						<Box --color={guessData.contColor}>
+							<p>{guessData.guessCont}</p>
+						</Box>
+					</div> 
+			</div>
+			<div id='areaBox'>
+					<div class='feedback-box'>
+						<Box --color={guessData.areaColor} >
+							<p>{guessData.guessArea}</p>
+						</Box>
+					</div>  
+			</div>
+			<div id='popBox'>
+					<div class='feedback-box'>
+						<Box --color={guessData.popColor}>
+							<p>{guessData.guessPop}</p>
+						</Box>
+					</div> 
+			</div>
+		{/if}	
+	</div>
+{/each}
+{/each}   -->
+
+    {#each dataHolder as guessData}
         {#if guessCount > 0}
             <div class='feedback-wrapper gap-1'>
-				<!-- <Feedback guessData={guessData}>
 				
-				</Feedback> -->
                 <div id='nameBox'>
                         <div class='feedback-box'>
-                            <Box --color={guessData.letterColor}>
+                            <Box --color={guessData.letterColor} unfilled={(8-guessCount)}>
                                 <p>{guessData.guess.toUpperCase()}</p>
                             </Box>
                         </div>
                     </div>
                 <div id='hemiBox'>
                         <div class='feedback-box'>
-                            <Box --color={guessData.hemiColor}>
+                            <Box --color={guessData.hemiColor} unfilled={(8-guessCount)}>
                                 <p>{guessData.guessHemi}</p>
                             </Box>
                         </div>
                 </div>
                 <div id='continentBox'>
                         <div class='feedback-box'>
-                            <Box --color={guessData.contColor}>
+                            <Box --color={guessData.contColor} unfilled={(8-guessCount)}>
                                 <p>{guessData.guessCont}</p>
                             </Box>
                         </div> 
                 </div>
                 <div id='areaBox'>
                         <div class='feedback-box'>
-                            <Box --color={guessData.areaColor} >
+                            <Box --color={guessData.areaColor} unfilled={(8-guessCount)}>
                                 <p>{guessData.guessArea}</p>
                             </Box>
                         </div>  
                 </div>
                 <div id='popBox'>
                         <div class='feedback-box'>
-                            <Box --color={guessData.popColor}>
+                            <Box --color={guessData.popColor} unfilled={(8-guessCount)}>
                                 <p>{guessData.guessPop}</p>
                             </Box>
                         </div> 
@@ -203,7 +293,7 @@
             </div>
         {/if}    
     {/each}  
-      <div id="guessHolder"></div>
+      <!-- <div id="dataHolder"></div> -->
   </body>
   
   
@@ -245,7 +335,7 @@
     cursor: pointer;
   }
   
-  #guessHolder {
+  #dataHolder {
     color: antiquewhite;
   }
 /*   
