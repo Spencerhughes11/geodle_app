@@ -46,6 +46,15 @@
 	const territories = ['cayman islands', 'u.s. virgin islands', 'us virgin islands', 
                     'british virgin islands', 'guam','samoa', 'american samoa',
                     "samoa", 'turks and caicos', 'bermuda']
+	
+	let newGame = () => {
+		guess = ''
+		guessCount = 0
+		dataHolder = []
+		guessedCountries = []
+		randomIndex = Math.floor(Math.random() * countryNames.length);
+		secretCountry = countryNames[randomIndex];
+	}
 
     let fetchData = async () => {
 		try {
@@ -55,7 +64,12 @@
 			if (guessedCountries.includes(guess.toLowerCase())) {
 				alert(`Already guessed '${guess}'`)
 				guess = ''
-			} else {
+				return
+			} 
+			if (guessCount > 7) {
+				alert(`Out of guesses :( The secret country was: ${secretCountry}`)				// FIXME
+				newGame();
+			}
 				const timeLabel = `Fetching data for ${guess}`
 				guessedCountries.push(guess.toLowerCase());
 
@@ -100,17 +114,11 @@
 				guessCount++;
 				console.log('Guess:', guess)
 				console.log('Secret country:', secretCountry)
-				if (guess == secretCountry){
+				if (guess.toLowerCase() == secretCountry.toLowerCase()) {
 					alert(`You've guessed correctly in ${guessCount} tries!`)
-					guess = ''
-					guessCount = 0
-					dataHolder = []
-					randomIndex = Math.floor(Math.random() * countryNames.length);
-					secretCountry = countryNames[randomIndex];
-
+					newGame();
 				} 
 				guess = ''
-			}
 		}  catch (error) {
 	console.error('Error:', error);
 	if (!territories.includes(guess.toLowerCase()))
@@ -149,9 +157,15 @@
   
   
   <body>
-        <div class="showAnswer">
+        <div class="headerWrapper">
             <h1 class='head'>GEODLE</h1>
             <button id="showAnswer" on:click={showAnswer}>Show Answer</button>
+			<!-- <div>
+				<label class="switch">
+					<input type="checkbox">
+					<span class="slider round"></span>
+				</label>
+			</div> -->
         </div>
 
         <div class="input">
@@ -257,35 +271,35 @@
 				
                 <div id='nameBox'>
                         <div class='feedback-box'>
-                            <Box --color={guessData.letterColor} unfilled={(8-guessCount)}>
+                            <Box --color={guessData.letterColor}>
                                 <p>{guessData.guess.toUpperCase()}</p>
                             </Box>
                         </div>
                     </div>
                 <div id='hemiBox'>
                         <div class='feedback-box'>
-                            <Box --color={guessData.hemiColor} unfilled={(8-guessCount)}>
+                            <Box --color={guessData.hemiColor}>
                                 <p>{guessData.guessHemi}</p>
                             </Box>
                         </div>
                 </div>
                 <div id='continentBox'>
                         <div class='feedback-box'>
-                            <Box --color={guessData.contColor} unfilled={(8-guessCount)}>
+                            <Box --color={guessData.contColor}>
                                 <p>{guessData.guessCont}</p>
                             </Box>
                         </div> 
                 </div>
                 <div id='areaBox'>
                         <div class='feedback-box'>
-                            <Box --color={guessData.areaColor} unfilled={(8-guessCount)}>
+                            <Box --color={guessData.areaColor}>
                                 <p>{guessData.guessArea}</p>
                             </Box>
                         </div>  
                 </div>
                 <div id='popBox'>
                         <div class='feedback-box'>
-                            <Box --color={guessData.popColor} unfilled={(8-guessCount)}>
+                            <Box --color={guessData.popColor}>
                                 <p>{guessData.guessPop}</p>
                             </Box>
                         </div> 
@@ -432,7 +446,7 @@
     align-items: center;
     justify-content: center;
   }
-  .showAnswer {
+  .headerWrapper {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -445,6 +459,8 @@
     right: 15px;
     
   }
+
+
   
   </style>
   

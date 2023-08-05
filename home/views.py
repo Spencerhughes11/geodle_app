@@ -17,8 +17,19 @@ class Main(View):
 
     # @require_http_methods(['GET'])
     def get(self, request: HttpRequest, **kwargs):
-        try: 
-            guess = (request.GET.get('guess')).capitalize()
+        try:
+            guess = (request.GET.get('guess'))
+            capitalized = []
+            if ' ' in guess:
+                temp = guess.strip().split(' ')
+                for word in temp:
+                    if word != 'and':
+                        word = word.capitalize()
+                    capitalized.append(word)
+
+                guess = ' '.join(capitalized)
+            else:
+                guess = guess.capitalize()
             secret_country = request.GET.get('secret_country')
             self.compare = Comparisons(secret_country)
             if not (guess and secret_country):
