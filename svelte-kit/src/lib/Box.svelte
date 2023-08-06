@@ -17,6 +17,6 @@
 		background: var(--color, #ddd);
         align-items: center;
         justify-content: center;
-        text-align: center;
+        text-align: left;
 	}
 </style>

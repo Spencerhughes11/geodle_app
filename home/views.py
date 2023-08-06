@@ -20,6 +20,7 @@ class Main(View):
         try:
             guess = (request.GET.get('guess'))
             capitalized = []
+            # Handle multi-word country names
             if ' ' in guess:
                 temp = guess.strip().split(' ')
                 for word in temp:

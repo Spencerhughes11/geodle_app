@@ -158,9 +158,9 @@ const countryList = [
     "Dominica",
     "Greenland",
     "Monaco",
-    "Turks and Caicos",
     "Liechtenstein",
     "Gibraltar",
+    'Democratic Republic of the Congo'
 ];
 
 export default countryList 

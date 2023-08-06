@@ -158,8 +158,13 @@
   
   <body>
         <div class="headerWrapper">
+			<div class='guessCounter'>
+				<p>Guesses:</p>
+				<p id='guessTotal'>{guessCount} / 8</p>
+			</div>
             <h1 class='head'>GEODLE</h1>
-            <button id="showAnswer" on:click={showAnswer}>Show Answer</button>
+			
+            <!-- <button id="showAnswer" on:click={showAnswer}>Show Answer</button> -->
 			<!-- <div>
 				<label class="switch">
 					<input type="checkbox">
@@ -316,7 +321,6 @@
  :global(body){
     background-color: #011844;
  }
-   
   h1{
     color: antiquewhite;
     font-size: 50px;
@@ -399,6 +403,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+	text-align: center;
   }
  
   p{
@@ -460,6 +465,20 @@
     
   }
 
+
+.guessCounter {
+	color: antiquewhite;
+	position: absolute;
+	top: 15px;
+	left: 15px;
+}
+
+#guessTotal {
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	padding-top: 0;
+}
 
   
   </style>
