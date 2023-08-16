@@ -85,8 +85,8 @@ class Main(View):
     
         return JsonResponse(all_data)
     
-    # def get_secret_country(self):
-    #     print(f'Secret: {self.compare.get_secret_country}')
+    def get_secret_country(self):
+        print(f'Secret: {self.compare.get_secret_country}')
 
 
 

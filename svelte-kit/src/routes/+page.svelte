@@ -66,7 +66,7 @@
 				guess = ''
 				return
 			} 
-			if (guessCount > 7) {
+			if (guessCount == 7) {
 				alert(`Out of guesses :( The secret country was: ${secretCountry}`)				// FIXME
 				newGame();
 			}
@@ -157,12 +157,23 @@
   
   
   <body>
-        <div class="headerWrapper">
-			<div class='guessCounter'>
-				<p>Guesses:</p>
-				<p id='guessTotal'>{guessCount} / 8</p>
-			</div>
-            <h1 class='head'>GEODLE</h1>
+      <div class="headerWrapper">
+        <div class='guessCounter'>
+          <p>Guesses:</p>
+          <p id='guessTotal'>{guessCount} / 8</p>
+        </div>
+        <!-- <div class='title-bar'> -->
+          <div class='info'>
+            <a href="/" class="active" aria-current="page" aria-label="help" data-cy="home-link">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="info" height="24" width="24">
+                <path fill="black dark:white" d="M12 22c-5.52-.006-9.994-4.48-10-10v-.2C2.11 6.305 6.635 1.928 12.13 2c5.497.074 9.904 4.569 9.868
+                10.065C21.962 17.562 17.497 22 12 22zm-.016-2H12a8 8 0 1 0-.016 0zM13 18h-2v-2h2v2zm0-3h-2a3.583 3.583 0 0 1 1.77-3.178C13.43 11.316 
+                14 10.88 14 10a2 2 0 1 0-4 0H8v-.09a4 4 0 1 1 8 .09a3.413 3.413 0 0 1-1.56 2.645A3.1 3.1 0 0 0 13 15z"></path>
+              </svg>
+            </a>
+          </div>
+          <h1 class='head'>GEODLE</h1>
+        <!-- </div> -->
 			
             <!-- <button id="showAnswer" on:click={showAnswer}>Show Answer</button> -->
 			<!-- <div>
@@ -324,6 +335,7 @@
   h1{
     color: antiquewhite;
     font-size: 50px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
   
   h1:after {
@@ -343,6 +355,7 @@
     justify-content: center;
   }
   #enter {
+    display: flex;
     background-color: antiquewhite;
     cursor: pointer;
   
@@ -479,7 +492,16 @@
 	text-align: center;
 	padding-top: 0;
 }
+.title-bar{
+  align-items: center;
+}
+.info {
+  position: flex;
+  align-items: left;
+  justify-content: left;
+  fill: antiquewhite;
+}
 
-  
+
   </style>
   
