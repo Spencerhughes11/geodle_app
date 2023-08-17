@@ -153,6 +153,13 @@
 		alert(`Secret country is ${secretCountry}`);
 	}
 
+  let infoText = () => {
+    alert('Rules for Geodle... coming soon!');
+  }
+  let settingsPopup = () => {
+    alert('Settings for Geodle... coming soon!\nWill include difficulty, theme, and more.');
+  }
+
 </script>
   
   
@@ -164,15 +171,30 @@
         </div>
         <!-- <div class='title-bar'> -->
           <div class='info'>
-            <a href="/" class="active" aria-current="page" aria-label="help" data-cy="home-link">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="info" height="24" width="24">
-                <path fill="black dark:white" d="M12 22c-5.52-.006-9.994-4.48-10-10v-.2C2.11 6.305 6.635 1.928 12.13 2c5.497.074 9.904 4.569 9.868
-                10.065C21.962 17.562 17.497 22 12 22zm-.016-2H12a8 8 0 1 0-.016 0zM13 18h-2v-2h2v2zm0-3h-2a3.583 3.583 0 0 1 1.77-3.178C13.43 11.316 
-                14 10.88 14 10a2 2 0 1 0-4 0H8v-.09a4 4 0 1 1 8 .09a3.413 3.413 0 0 1-1.56 2.645A3.1 3.1 0 0 0 13 15z"></path>
+            <a href="/" on:click={infoText} class="active" aria-current="page" aria-label="help" data-cy="home-link">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="info" height="24" width="24">
+                    <path fill="black dark:white" d="M12 22c-5.52-.006-9.994-4.48-10-10v-.2C2.11 6.305 6.635 1.928 12.13 2c5.497.074 9.904 4.569 9.868
+						10.065C21.962 17.562 17.497 22 12 22zm-.016-2H12a8 8 0 1 0-.016 0zM13 18h-2v-2h2v2zm0-3h-2a3.583 3.583 0 0 1 1.77-3.178C13.43 11.316 
+						14 10.88 14 10a2 2 0 1 0-4 0H8v-.09a4 4 0 1 1 8 .09a3.413 3.413 0 0 1-1.56 2.645A3.1 3.1 0 0 0 13 15z">
+				    </path>
               </svg>
             </a>
           </div>
           <h1 class='head'>GEODLE</h1>
+          <div class='settings'>
+			<a href='/' on:click={settingsPopup}>
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="antiquewhite" stroke-width="2" stroke-linecap="round"
+				stroke-linejoin="round" class="settings">
+				<circle cx="12" cy="12" r="3" ></circle>
+					<path fill='transparent' d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2
+					2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 
+					.33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1
+					2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2
+						2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+					</path>
+				</svg>
+			</a>
+          </div>
         <!-- </div> -->
 			
             <!-- <button id="showAnswer" on:click={showAnswer}>Show Answer</button> -->
@@ -500,6 +522,12 @@
   align-items: left;
   justify-content: left;
   fill: antiquewhite;
+}
+
+.settings {
+  position: flex;
+  align-items: right;
+  justify-content: right;
 }
 
 
