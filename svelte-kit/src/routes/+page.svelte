@@ -22,7 +22,7 @@
 
 	let guessCount = 0;
 
-    let dataHolder = [];
+    let guessHolder = [];
 	let guessedCountries = [];
 
     let all_data = {};
@@ -50,7 +50,7 @@
 	let newGame = () => {
 		guess = ''
 		guessCount = 0
-		dataHolder = []
+		guessHolder = []
 		guessedCountries = []
 		randomIndex = Math.floor(Math.random() * countryNames.length);
 		secretCountry = countryNames[randomIndex];
@@ -66,7 +66,7 @@
 				guess = ''
 				return
 			} 
-			if (guessCount == 7) {
+			if (guessCount == 7 && guess.toLowerCase() != secretCountry.toLowerCase()) {
 				alert(`Out of guesses :( The secret country was: ${secretCountry}`)				// FIXME
 				newGame();
 			}
@@ -95,8 +95,8 @@
 				popColor = all_data.feedback.population ? all_data.feedback.population : '' ;
 				guessData = all_data.guess_data
 				// console.log(guessData)
-				// dataHolder.push(guess);
-				dataHolder.push({
+				// guessHolder.push(guess);
+				guessHolder.push({
 					guess: guess,
 					guessHemi: guessHemi,
 					guessCont: guessCont,
@@ -108,7 +108,7 @@
 					areaColor: areaColor,
 					popColor: popColor
 				});
-				console.log('dataHolder: ', dataHolder)
+				console.log('guessHolder: ', guessHolder)
 				// console.log('popColor: ', popColor)
 
 				guessCount++;
@@ -135,7 +135,7 @@
     //     console.log('All Data: ', all_data);
 
     //     guessCount++;
-    //     dataHolder.push(guess);
+    //     guessHolder.push(guess);
 
     // }
             
@@ -227,7 +227,7 @@
         <p class='header'>AREA</p>
         <p class='header'>POPULATION</p>
     </div> 
-<!-- {#each dataHolder as guessData}
+<!-- {#each guessHolder as guessData}
 
 {#each {length : 8} as index}
 	<div class='feedback-wrapper gap-1'>
@@ -303,7 +303,7 @@
 {/each}
 {/each}   -->
 
-    {#each dataHolder as guessData}
+    {#each guessHolder as guessData}
         {#if guessCount > 0}
             <div class='feedback-wrapper gap-1'>
 				
@@ -345,7 +345,7 @@
             </div>
         {/if}    
     {/each}  
-      <!-- <div id="dataHolder"></div> -->
+      <!-- <div id="guessHolder"></div> -->
   </body>
   
   
@@ -355,7 +355,10 @@
     background-color: #011844;
  }
   h1{
+    display: flex;
     color: antiquewhite;
+    width: 50%;
+    justify-content: space-between;
     font-size: 50px;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
@@ -375,12 +378,29 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 5px;
+    height: 35px;
+  }
+
+  #userGuess {
+    display: flex;
+    height: 100%;
+    width: 20%;
+    border-radius: 5px;
+    /* padding: 3px; */
+    border: none;
   }
   #enter {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: medium;
     background-color: antiquewhite;
     cursor: pointer;
-  
+    height: 100%;
+    width: 5%;
+    border-radius: 5px;
+    padding: 3px;
   }
   
   #countryDropdown {
@@ -388,7 +408,7 @@
     cursor: pointer;
   }
   
-  #dataHolder {
+  #guessHolder {
     color: antiquewhite;
   }
 /*   
