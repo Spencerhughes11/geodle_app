@@ -14,3 +14,16 @@
 - Use the information provided to assist you on your quest to becoming the best Geodler!
 
 -Some countries lie on the border of continents. Whichever continent they predominantly reside on is classified as their home continent for Geodle's sake. (i.e. Russia is classified as Asian)
+
+
+## How to run
+
+from the./geodle_app directory:
+
+### `python3 manage.py runserver` to initialize the Django server
+
+from the ./svelte-kit directory:
+
+### `npm run dev`
+
+for the live server
