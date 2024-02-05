@@ -1,5 +1,5 @@
-# Geodle
-============================= Welcome to Geodle! ==============================
+
+# ============================= Welcome to Geodle! ==============================
 
 - The goal of the game is to successfully guess the secret country.
 - You are given 8 tries to guess from a list of over 140 major countries.
@@ -18,12 +18,14 @@
 
 ## How to run
 
-from the./geodle_app directory:
+from the./geodle_app directory run:
 
-### `python3 manage.py runserver` to initialize the Django server
+### `python3 manage.py runserver`
+
+to initialize the Django server.
 
 from the ./svelte-kit directory:
 
 ### `npm run dev`
 
-for the live server
+for to activate live server on local host
