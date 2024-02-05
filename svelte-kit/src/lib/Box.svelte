@@ -9,7 +9,8 @@
 
 <style>
 	.box {
-		width: 6em;
+		display: flex;
+		width: 8em;
 		height: 3em;
 		border-radius: 0.35em;
 		/* margin: 0 0 0 0; */

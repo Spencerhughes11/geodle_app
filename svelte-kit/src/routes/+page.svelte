@@ -94,7 +94,7 @@
 				areaColor = all_data.feedback.area ? all_data.feedback.area : '' ;
 				popColor = all_data.feedback.population ? all_data.feedback.population : '' ;
 				guessData = all_data.guess_data
-				// console.log(guessData)
+				// console.log('Guess Data: ', guessData)
 				// guessHolder.push(guess);
 				guessHolder.push({
 					guess: guess,
@@ -308,39 +308,39 @@
             <div class='feedback-wrapper gap-1'>
 				
                 <div id='nameBox'>
-                        <div class='feedback-box'>
+                        <!-- <div class='feedback-box'> -->
                             <Box --color={guessData.letterColor}>
-                                <p>{guessData.guess.toUpperCase()}</p>
+                                <p class="guessStuff" >{guessData.guess.toUpperCase()}</p>
                             </Box>
-                        </div>
+                        <!-- </div> -->
                     </div>
                 <div id='hemiBox'>
-                        <div class='feedback-box'>
+                        <!-- <div class='feedback-box'> -->
                             <Box --color={guessData.hemiColor}>
-                                <p>{guessData.guessHemi}</p>
+                                <p class="guessStuff" >{guessData.guessHemi}</p>
                             </Box>
-                        </div>
+                        <!-- </div> -->
                 </div>
                 <div id='continentBox'>
-                        <div class='feedback-box'>
+                        <!-- <div class='feedback-box'> -->
                             <Box --color={guessData.contColor}>
-                                <p>{guessData.guessCont}</p>
+                                <p class="guessStuff" >{guessData.guessCont}</p>
                             </Box>
-                        </div> 
+                        <!-- </div>  -->
                 </div>
                 <div id='areaBox'>
-                        <div class='feedback-box'>
+                        <!-- <div class='feedback-box'> -->
                             <Box --color={guessData.areaColor}>
-                                <p>{guessData.guessArea}</p>
+                                <p class="guessStuff" >{guessData.guessArea}</p>
                             </Box>
-                        </div>  
+                        <!-- </div>   -->
                 </div>
                 <div id='popBox'>
-                        <div class='feedback-box'>
+                        <!-- <div class='feedback-box'> -->
                             <Box --color={guessData.popColor}>
-                                <p>{guessData.guessPop}</p>
+                                <p class="guessStuff" >{guessData.guessPop}</p>
                             </Box>
-                        </div> 
+                        <!-- </div>  -->
                 </div>
             </div>
         {/if}    
@@ -355,11 +355,11 @@
     background-color: #011844;
  }
   h1{
-    display: flex;
+    display: grid;
     color: antiquewhite;
     width: 50%;
     justify-content: space-between;
-    font-size: 50px;
+    font-size: 60px;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
   
@@ -422,7 +422,7 @@
   
   .feedback-wrapper{
     display: grid;
-    width: 40%;
+    width: 45%;
     margin: auto;
     align-items: center;
     justify-content: center;
@@ -430,17 +430,18 @@
     /* grid-template-columns: (5,minmax(0,1fr)); */
   }
   .gap-1 {
-    column-gap: 7px;
+    column-gap: 10%;
   }
 
   .headers-wrapper{
     height: 65px;
-    display: grid;
-    width: 35%;
-    margin: auto;
+    display: flex;
+    width: 45%;
+    margin: 35px auto auto auto;
     align-items: center;
     justify-content: center;
-    grid-auto-columns: 1fr;
+    gap: 10%;
+    /* grid-auto-columns: 1fr; */
     /* grid-template-columns: (5,minmax(0,1fr)); */
   }
   
@@ -451,7 +452,13 @@
     align-items: center;
     justify-content: center;
     grid-row: 1 / span 12;
-    height: 25px
+    height: 25px;
+    width: 8em;
+  }
+
+  .guessStuff{
+    font-size: auto;
+    text-align: center;
   }
 
   .feedback-box {
@@ -470,6 +477,7 @@
   }
 
   #nameBox{
+    display: flex;
     align-items: center;
     justify-content: center;
     grid-row: 1 / span 12;
