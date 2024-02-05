@@ -1,5 +1,5 @@
 
-# ============================= Welcome to Geodle! ==============================
+#  Welcome to Geodle! 
 
 - The goal of the game is to successfully guess the secret country.
 - You are given 8 tries to guess from a list of over 140 major countries.
