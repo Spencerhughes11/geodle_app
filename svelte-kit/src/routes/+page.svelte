@@ -6,6 +6,8 @@
 	import data from '../../../data.json';
 	import { json } from '@sveltejs/kit';
 	import countryList  from '../lib/countrylist';
+  import * as THREE from 'three';
+
     
 	// Dummy Data for test
     // $: all_data = {'feedback': {'letter': 'grey', 'hemisphere': 'green', 'continent': 'yellow', 'area': 'grey', 
@@ -113,7 +115,7 @@
 
 				guessCount++;
 				console.log('Guess:', guess)
-				console.log('Secret country:', secretCountry)
+				// console.log('Secret country:', secretCountry)
 				if (guess.toLowerCase() == secretCountry.toLowerCase()) {
 					alert(`You've guessed correctly in ${guessCount} tries!`)
 					newGame();
@@ -163,47 +165,54 @@
 </script>
   
   
-  <body>
-      <div class="headerWrapper">
-        <div class='guessCounter'>
-          <p>Guesses:</p>
-          <p id='guessTotal'>{guessCount} / 8</p>
+<body>
+    <div class="headerWrapper">
+        <div class='title-bar'>
+            <div class='left-section'>
+                <!-- <p>Guesses:</p> -->
+                <p id='guessTotal'>Guesses: {guessCount} / 8</p>
+                
+            </div>
+            <div class='center-section'>
+                <h1 class='head'>GEODLE</h1>
+            </div>
+            <div class='right-section'>
+
+                <a href='/' on:click={settingsPopup}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="antiquewhite" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="settings">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path fill='transparent' d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 
+                        0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 
+                        1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 
+                        0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65
+                        0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0
+                        0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2
+                        2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 
+                        2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                        </path>
+                    </svg>
+                </a>
+                <a href="/" on:click={infoText} class="active" aria-current="page" aria-label="help" data-cy="home-link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="info" height="24" width="24">
+                      <path fill="black dark:white" d="M12 22c-5.52-.006-9.994-4.48-10-10v-.2C2.11 6.305 6.635 1.928 12.13
+                       2c5.497.074 9.904 4.569 9.868 10.065C21.962 17.562 17.497 22 12 22zm-.016-2H12a8 8 0 1 0-.016 0zM13 
+                       18h-2v-2h2v2zm0-3h-2a3.583 3.583 0 0 1 1.77-3.178C13.43 11.316 14 10.88 14 10a2 2 0 1 0-4 0H8v-.09a4
+                        4 0 1 1 8 .09a3.413 3.413 0 0 1-1.56 2.645A3.1 3.1 0 0 0 13 15z">
+                      </path>
+                  </svg>
+              </a>
+            </div>
         </div>
-        <!-- <div class='title-bar'> -->
-          <div class='info'>
-            <a href="/" on:click={infoText} class="active" aria-current="page" aria-label="help" data-cy="home-link">
-               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="info" height="24" width="24">
-                    <path fill="black dark:white" d="M12 22c-5.52-.006-9.994-4.48-10-10v-.2C2.11 6.305 6.635 1.928 12.13 2c5.497.074 9.904 4.569 9.868
-						10.065C21.962 17.562 17.497 22 12 22zm-.016-2H12a8 8 0 1 0-.016 0zM13 18h-2v-2h2v2zm0-3h-2a3.583 3.583 0 0 1 1.77-3.178C13.43 11.316 
-						14 10.88 14 10a2 2 0 1 0-4 0H8v-.09a4 4 0 1 1 8 .09a3.413 3.413 0 0 1-1.56 2.645A3.1 3.1 0 0 0 13 15z">
-				    </path>
-              </svg>
-            </a>
-          </div>
-          <h1 class='head'>GEODLE</h1>
-          <div class='settings'>
-			<a href='/' on:click={settingsPopup}>
-				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="antiquewhite" stroke-width="2" stroke-linecap="round"
-				stroke-linejoin="round" class="settings">
-				<circle cx="12" cy="12" r="3" ></circle>
-					<path fill='transparent' d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2
-					2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 
-					.33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1
-					2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2
-						2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
-					</path>
-				</svg>
-			</a>
-          </div>
-        <!-- </div> -->
-			
-            <!-- <button id="showAnswer" on:click={showAnswer}>Show Answer</button> -->
-			<!-- <div>
-				<label class="switch">
-					<input type="checkbox">
-					<span class="slider round"></span>
-				</label>
-			</div> -->
+    <!-- </div> -->
+    
+                
+                <!-- <button id="showAnswer" on:click={showAnswer}>Show Answer</button> -->
+                <!-- <div>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div> -->
         </div>
 
         <div class="input">
@@ -215,11 +224,9 @@
 				{/each}
 			</datalist>
             <button id="enter" on:click={fetchData}>Enter</button> 
-            <!-- </form>   -->
         </div>
-      <!-- <select id="countryDropdown"></select> -->
     <!--  feedback boxes -->
-    
+      
     <div class="headers-wrapper gap-1">
         <p class='header'>NAME</p>
         <p class='header'>HEMISPHERE</p>
@@ -227,117 +234,43 @@
         <p class='header'>AREA</p>
         <p class='header'>POPULATION</p>
     </div> 
-<!-- {#each guessHolder as guessData}
 
-{#each {length : 8} as index}
-	<div class='feedback-wrapper gap-1'>
-		{#if guessCount = 0}
-			<div id='nameBox'>
-					<div class='feedback-box'>
-						<Box >
-						</Box>
-					</div>
-				</div>
-			<div id='hemiBox'>
-					<div class='feedback-box'>
-						<Box>
-						</Box>
-					</div>
-			</div>
-			<div id='continentBox'>
-					<div class='feedback-box'>
-						<Box>
-						</Box>
-					</div> 
-			</div>
-			<div id='areaBox'>
-					<div class='feedback-box'>
-						<Box >
-						</Box>
-					</div>  
-			</div>
-			<div id='popBox'>
-					<div class='feedback-box'>
-						<Box >
-						</Box>
-					</div> 
-			</div>
-		{:else if guessCount == index}
-			<div id='nameBox'>
-				<div class='feedback-box'>
-					<Box --color={guessData.letterColor} filled=true>
-						<p>{guessData.guess.toUpperCase()}</p>
-					</Box>
-				</div>
-			</div>
-			<div id='hemiBox'>
-					<div class='feedback-box'>
-						<Box --color={guessData.hemiColor}>
-							<p>{guessData.guessHemi}</p>
-						</Box>
-					</div>
-			</div>
-			<div id='continentBox'>
-					<div class='feedback-box'>
-						<Box --color={guessData.contColor}>
-							<p>{guessData.guessCont}</p>
-						</Box>
-					</div> 
-			</div>
-			<div id='areaBox'>
-					<div class='feedback-box'>
-						<Box --color={guessData.areaColor} >
-							<p>{guessData.guessArea}</p>
-						</Box>
-					</div>  
-			</div>
-			<div id='popBox'>
-					<div class='feedback-box'>
-						<Box --color={guessData.popColor}>
-							<p>{guessData.guessPop}</p>
-						</Box>
-					</div> 
-			</div>
-		{/if}	
-	</div>
-{/each}
-{/each}   -->
 
     {#each guessHolder as guessData}
         {#if guessCount > 0}
-            <div class='feedback-wrapper gap-1'>
+            <div class='feedback-wrapper'>
 				
-                <div id='nameBox'>
+                <div id='box'>
                         <!-- <div class='feedback-box'> -->
-                            <Box --color={guessData.letterColor}>
+                            <Box color={guessData.letterColor}>
                                 <p class="guessStuff" >{guessData.guess.toUpperCase()}</p>
                             </Box>
                         <!-- </div> -->
                     </div>
-                <div id='hemiBox'>
+                <div id='box'>
                         <!-- <div class='feedback-box'> -->
-                            <Box --color={guessData.hemiColor}>
+                            <Box color={guessData.hemiColor}>
                                 <p class="guessStuff" >{guessData.guessHemi}</p>
                             </Box>
                         <!-- </div> -->
                 </div>
-                <div id='continentBox'>
+                <div id='box'>
                         <!-- <div class='feedback-box'> -->
-                            <Box --color={guessData.contColor}>
+                            <Box color={guessData.contColor}>
                                 <p class="guessStuff" >{guessData.guessCont}</p>
                             </Box>
                         <!-- </div>  -->
                 </div>
-                <div id='areaBox'>
+                <div id='box'>
                         <!-- <div class='feedback-box'> -->
-                            <Box --color={guessData.areaColor}>
+                            <Box color={guessData.areaColor}>
                                 <p class="guessStuff" >{guessData.guessArea}</p>
                             </Box>
                         <!-- </div>   -->
                 </div>
-                <div id='popBox'>
+                <div id='box'>
                         <!-- <div class='feedback-box'> -->
-                            <Box --color={guessData.popColor}>
+                            <Box color={guessData.popColor}>
                                 <p class="guessStuff" >{guessData.guessPop}</p>
                             </Box>
                         <!-- </div>  -->
@@ -346,6 +279,7 @@
         {/if}    
     {/each}  
       <!-- <div id="guessHolder"></div> -->
+       
   </body>
   
   
@@ -360,10 +294,9 @@
     width: 50%;
     justify-content: space-between;
     font-size: 60px;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
   }
-  
-  h1:after {
+  /* h1:after {
     content:' ';
     display:block;
     border:2px solid #d0d0d0;
@@ -373,17 +306,18 @@
     box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
     -webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
     -moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
-}
+} */
   .input{
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
-    height: 35px;
+    gap: 0.2%;
+    height: 2em;
+    margin: 1em 0 1em 0;
   }
 
   #userGuess {
-    display: flex;
+    /* display: flex; */
     height: 100%;
     width: 20%;
     border-radius: 5px;
@@ -391,9 +325,7 @@
     border: none;
   }
   #enter {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    /* display: flex; */
     font-size: medium;
     background-color: antiquewhite;
     cursor: pointer;
@@ -419,47 +351,35 @@
     width: 75%;
     margin: auto
   } */
-  
-  .feedback-wrapper{
+  .headers-wrapper,
+.feedback-wrapper {
     display: grid;
-    width: 45%;
-    margin: auto;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    width: 80%;
+    max-width: 65%;
+    margin: 0 auto;
     align-items: center;
     justify-content: center;
-    grid-auto-columns: 1fr;
-    /* grid-template-columns: (5,minmax(0,1fr)); */
-  }
-  .gap-1 {
-    column-gap: 10%;
-  }
+}
 
-  .headers-wrapper{
-    height: 65px;
+.guessStuff {
+  font-size: clamp(1rem, 1vw, 1.5rem);
+  color: #011844;
+    text-align: center;
     display: flex;
-    width: 45%;
-    margin: 35px auto auto auto;
     align-items: center;
     justify-content: center;
-    gap: 10%;
-    /* grid-auto-columns: 1fr; */
-    /* grid-template-columns: (5,minmax(0,1fr)); */
-  }
-  
-  .header{
-    font-size: 18px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.header{
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
     color: antiquewhite;
     text-align: center;
+    display: flex;
     align-items: center;
     justify-content: center;
-    grid-row: 1 / span 12;
-    height: 25px;
-    width: 8em;
-  }
-
-  .guessStuff{
-    font-size: auto;
-    text-align: center;
-  }
+}
 
   .feedback-box {
     display: flex;
@@ -476,41 +396,16 @@
 	justify-content: center;
   }
 
-  #nameBox{
+  #box{
     display: flex;
     align-items: center;
     justify-content: center;
-    grid-row: 1 / span 12;
+    /* grid-row: 1 / span 12; */
     text-align: center;
   }
-  #hemiBox{
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    grid-row: 1 / span 12;
-  }
-  #continentBox{
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    grid-row: 1 / span 12;
-  }
-  #areaBox{
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    grid-row: 1 / span 12;
-  }
-  #popBox{
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    grid-row: 1 / span 12;
-  }
-  
   
   .head{
-    display: flexbox;
+    display: flex;
     align-items: center;
     justify-content: center;
   }
@@ -518,8 +413,52 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100px;
-  }
+    /* height: 5em; */
+    width: 100%;
+}
+
+.title-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 75%;
+    border-bottom: 1px solid antiquewhite;
+    /* margin: 5em 0 7em 0; */
+    height: 5em;
+    padding: 0%;
+}
+
+.left-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 30%;
+    color: antiquewhite;
+}
+
+.center-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+
+}
+
+.right-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 30%;
+    gap: 1em;
+}
+
+/* #guessTotal {
+    text-align: left;
+    color: antiquewhite;
+    width: 25%;
+} */
+
   
   #showAnswer {
     position: absolute;
@@ -531,20 +470,13 @@
 
 .guessCounter {
 	color: antiquewhite;
-	position: absolute;
+	/* position: absolute;
 	top: 15px;
-	left: 15px;
+	left: 15px; */
 }
 
-#guessTotal {
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-	padding-top: 0;
-}
-.title-bar{
-  align-items: center;
-}
+
+
 .info {
   position: flex;
   align-items: left;

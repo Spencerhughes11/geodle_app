@@ -159,7 +159,6 @@ const countryList = [
     "Greenland",
     "Monaco",
     "Liechtenstein",
-    "Gibraltar",
     'Democratic Republic of the Congo'
 ];
 

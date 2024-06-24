@@ -6,7 +6,7 @@ from django.http import HttpResponse, JsonResponse, HttpRequest
 import json
 import numpy as np
 import pandas as pd
-from home.compare import Comparisons
+from helpers.compare import Comparisons
 
 # Create your views here.
 # request handlers

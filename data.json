@@ -336,10 +336,10 @@
      },
 
      "Nepal": {
-   "population": "29,136,808",
-   "area": "143,350",
-   "hemisphere": "N",
-   "continent": "Asia"
+        "population": "29,136,808",
+        "area": "143,350",
+        "hemisphere": "N",
+        "continent": "Asia"
      },
 
      "Venezuela": {

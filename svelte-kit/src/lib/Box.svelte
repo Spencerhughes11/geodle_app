@@ -1,23 +1,21 @@
 <script>
-    
+    export let color;
 </script>
 
-
-<div class="box">
+<div class="box" style="--color: {color}">
     <slot />
 </div>
 
 <style>
-	.box {
-		display: flex;
-		width: 8em;
-		height: 3em;
-		border-radius: 0.35em;
-		/* margin: 0 0 0 0; */
-        margin-bottom: 25px;
-		background: var(--color, #ddd);
+    .box {
+        display: flex;
+        width: 8em;
+        height: 3em;
+		padding: 0.5em;
+        border-radius: 0.35em;
+        margin-bottom: 1em;
+        background: var(--color, #ddd);
         align-items: center;
         justify-content: center;
-        text-align: left;
-	}
+    }
 </style>
