@@ -7,12 +7,14 @@ import json
 import numpy as np
 import pandas as pd
 from helpers.compare import Comparisons
+import random
 
 # Create your views here.
 # request handlers
 
 class Main(View):
     def __init__(self):
+        # self.secTest = random.choice([str(x) for x in range(101)])   
         pass
 
     # @require_http_methods(['GET'])

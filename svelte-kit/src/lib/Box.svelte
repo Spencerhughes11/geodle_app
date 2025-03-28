@@ -11,7 +11,7 @@
         display: flex;
         width: 8em;
         height: 3em;
-		padding: 0.5em;
+		padding: 0.25em;
         border-radius: 0.35em;
         margin-bottom: 1em;
         background: var(--color, #ddd);

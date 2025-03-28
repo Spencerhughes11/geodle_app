@@ -1,13 +1,13 @@
 <script>
     import { onMount } from 'svelte';
     import Box from '../lib/Box.svelte';
+	import Modal from "$lib/Modal.svelte"
     import Feedback from '../lib/Feedback.svelte';
     import { backendURL } from '$lib/urls';
 	import data from '../../../data.json';
 	import { json } from '@sveltejs/kit';
 	import countryList  from '../lib/countrylist';
-  import * as THREE from 'three';
-
+	import "../../static/big.svg";
     
 	// Dummy Data for test
     // $: all_data = {'feedback': {'letter': 'grey', 'hemisphere': 'green', 'continent': 'yellow', 'area': 'grey', 
@@ -40,9 +40,7 @@
     let popColor;
 
     let guessData;
-    // onMount(async () => {
-    //     fetchData();
-    // })
+
     let guess = ''
     // const secretCountry = 'Germany';
 	const territories = ['cayman islands', 'u.s. virgin islands', 'us virgin islands', 
@@ -85,17 +83,17 @@
 				all_data = (await response.json());
 				console.log('All Data: ', all_data)
 
-				guessHemi = all_data.guess_data.hemisphere ? all_data.guess_data.hemisphere : '';
-				guessCont = all_data.guess_data.continent ? all_data.guess_data.continent : '';
-				guessArea = all_data.guess_data.area ? all_data.guess_data.area : '' ;
-				guessPop = all_data.guess_data.population ? all_data.guess_data.population : '';
+				guessHemi = all_data.guess_data.hemisphere ?? '';
+				guessCont = all_data.guess_data.continent ?? '';
+				guessArea = all_data.guess_data.area ?? '' ;
+				guessPop = all_data.guess_data.population ?? '';
 
-				letterColor = all_data.feedback.letter ? all_data.feedback.letter : '' ;
-				hemiColor = all_data.feedback.hemisphere ? all_data.feedback.hemisphere : '';
-				contColor = all_data.feedback.continent ? all_data.feedback.continent : '' ;
-				areaColor = all_data.feedback.area ? all_data.feedback.area : '' ;
-				popColor = all_data.feedback.population ? all_data.feedback.population : '' ;
-				guessData = all_data.guess_data
+				letterColor = all_data.feedback.letter ?? '' ;
+				hemiColor = all_data.feedback.hemisphere ?? '';
+				contColor = all_data.feedback.continent ?? '' ;
+				areaColor = all_data.feedback.area ?? '' ;
+				popColor = all_data.feedback.population ?? '' ;
+				guessData = all_data.guess_data ;
 				// console.log('Guess Data: ', guessData)
 				// guessHolder.push(guess);
 				guessHolder.push({
@@ -124,28 +122,19 @@
 		}  catch (error) {
 	console.error('Error:', error);
 	if (!territories.includes(guess.toLowerCase()))
-		alert(`'${guess}' not found in database`)				// FIXME: might apply to different error
+		alert(`Country not found in database`)				// FIXME: might apply to different error
 	}
 		
     }
 
-    // TEST for Dummy Data
-    // let test = async () => {
-    // if (guessCount < 8) {
-    //     console.log(guess.toLowerCase());
-    //     console.log(guessData)
-    //     console.log('All Data: ', all_data);
+	// Modals
+	$: showInfo = false;
+	$: showSettings = false;
+	
+    $: console.log(showInfo)
 
-    //     guessCount++;
-    //     guessHolder.push(guess);
-
-    // }
-            
-    //     };
-    
-
-    function handleKeydown(event) {
-		if (event.key === 'Enter') {
+    let handleKeydown = (e) => {
+		if (e.key === 'Enter') {
             fetchData();
         }
 
@@ -155,6 +144,8 @@
 		alert(`Secret country is ${secretCountry}`);
 	}
 
+  // nav bar handlers
+  let settings = false;
   let infoText = () => {
     alert('Rules for Geodle... coming soon!');
   }
@@ -162,9 +153,11 @@
     alert('Settings for Geodle... coming soon!\nWill include difficulty, theme, and more.');
   }
 
+
+
 </script>
   
-  
+<div class="border">
 <body>
     <div class="headerWrapper">
         <div class='title-bar'>
@@ -178,7 +171,17 @@
             </div>
             <div class='right-section'>
 
-                <a href='/' on:click={settingsPopup}>
+              <!-- <a href="/" on:click={infoText} class="active" aria-current="page" aria-label="help" data-cy="home-link"> -->
+              <a href="/" on:click={() => (showInfo = true)} class="active" aria-current="page" aria-label="help" data-cy="home-link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="info" height="24" width="24">
+                    <path fill="black dark:white" d="M12 22c-5.52-.006-9.994-4.48-10-10v-.2C2.11 6.305 6.635 1.928 12.13
+                     2c5.497.074 9.904 4.569 9.868 10.065C21.962 17.562 17.497 22 12 22zm-.016-2H12a8 8 0 1 0-.016 0zM13 
+                     18h-2v-2h2v2zm0-3h-2a3.583 3.583 0 0 1 1.77-3.178C13.43 11.316 14 10.88 14 10a2 2 0 1 0-4 0H8v-.09a4
+                      4 0 1 1 8 .09a3.413 3.413 0 0 1-1.56 2.645A3.1 3.1 0 0 0 13 15z">
+                    </path>
+                </svg>
+            </a>
+                <a href='/' on:click={() => (showSettings = !showSettings)}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="antiquewhite" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="settings">
                         <circle cx="12" cy="12" r="3"></circle>
                         <path fill='transparent' d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 
@@ -192,15 +195,6 @@
                         </path>
                     </svg>
                 </a>
-                <a href="/" on:click={infoText} class="active" aria-current="page" aria-label="help" data-cy="home-link">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="info" height="24" width="24">
-                      <path fill="black dark:white" d="M12 22c-5.52-.006-9.994-4.48-10-10v-.2C2.11 6.305 6.635 1.928 12.13
-                       2c5.497.074 9.904 4.569 9.868 10.065C21.962 17.562 17.497 22 12 22zm-.016-2H12a8 8 0 1 0-.016 0zM13 
-                       18h-2v-2h2v2zm0-3h-2a3.583 3.583 0 0 1 1.77-3.178C13.43 11.316 14 10.88 14 10a2 2 0 1 0-4 0H8v-.09a4
-                        4 0 1 1 8 .09a3.413 3.413 0 0 1-1.56 2.645A3.1 3.1 0 0 0 13 15z">
-                      </path>
-                  </svg>
-              </a>
             </div>
         </div>
     <!-- </div> -->
@@ -214,7 +208,9 @@
                     </label>
                 </div> -->
         </div>
-
+			{#if showSettings}
+				<Modal type="settings" />
+			{/if}
         <div class="input">
             <!-- <form method="POST" action="/"> -->
             <input list='countries' id="userGuess" placeholder="Enter country name here: " bind:value={guess} on:keydown={handleKeydown} autocapitalize="on"> 
@@ -226,53 +222,60 @@
             <button id="enter" on:click={fetchData}>Enter</button> 
         </div>
     <!--  feedback boxes -->
-      
+
     <div class="headers-wrapper gap-1">
         <p class='header'>NAME</p>
         <p class='header'>HEMISPHERE</p>
         <p class='header'>CONTINENT</p>
         <p class='header'>AREA</p>
         <p class='header'>POPULATION</p>
-    </div> 
-
-
+    </div>
+	
+<div style="align-items: center; display: flex; justify-content: center;">
+    {#if guessCount === 0}
+      <div class="globe"> 
+        <!-- <img class="image" src="earth.webp"alt="Earth"> -->
+        <img class="image" src="big.svg"alt="Earth">
+      </div>
+    {/if}
+</div>
     {#each guessHolder as guessData}
         {#if guessCount > 0}
             <div class='feedback-wrapper'>
 				
                 <div id='box'>
                         <!-- <div class='feedback-box'> -->
-                            <Box color={guessData.letterColor}>
-                                <p class="guessStuff" >{guessData.guess.toUpperCase()}</p>
-                            </Box>
+					<Box color={guessData.letterColor}>
+						<p class="guessStuff" >{guessData.guess.toUpperCase()}</p>
+					</Box>
                         <!-- </div> -->
                     </div>
                 <div id='box'>
                         <!-- <div class='feedback-box'> -->
-                            <Box color={guessData.hemiColor}>
-                                <p class="guessStuff" >{guessData.guessHemi}</p>
-                            </Box>
+					<Box color={guessData.hemiColor}>
+						<p class="guessStuff" >{guessData.guessHemi}</p>
+					</Box>
                         <!-- </div> -->
                 </div>
                 <div id='box'>
                         <!-- <div class='feedback-box'> -->
-                            <Box color={guessData.contColor}>
-                                <p class="guessStuff" >{guessData.guessCont}</p>
-                            </Box>
+					<Box color={guessData.contColor}>
+						<p class="guessStuff" >{guessData.guessCont}</p>
+					</Box>
                         <!-- </div>  -->
                 </div>
                 <div id='box'>
                         <!-- <div class='feedback-box'> -->
-                            <Box color={guessData.areaColor}>
-                                <p class="guessStuff" >{guessData.guessArea}</p>
-                            </Box>
+					<Box color={guessData.areaColor}>
+						<p class="guessStuff" >{guessData.guessArea}</p>
+					</Box>
                         <!-- </div>   -->
                 </div>
                 <div id='box'>
                         <!-- <div class='feedback-box'> -->
-                            <Box color={guessData.popColor}>
-                                <p class="guessStuff" >{guessData.guessPop}</p>
-                            </Box>
+					<Box color={guessData.popColor}>
+						<p class="guessStuff" >{guessData.guessPop}</p>
+					</Box>
                         <!-- </div>  -->
                 </div>
             </div>
@@ -282,9 +285,20 @@
        
   </body>
   
-  
+  </div>
   
 <style>
+	.border {
+		border: solid #011844 1px;
+		/* background: white; */
+		padding: 10px;
+		border-radius: 10px;
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Raised effect */
+		transition: all 0.3s ease-in-out;
+}
+.border:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* More elevation on hover */
+}
  :global(body){
     background-color: #011844;
  }
@@ -296,17 +310,7 @@
     font-size: 60px;
 
   }
-  /* h1:after {
-    content:' ';
-    display:block;
-    border:2px solid #d0d0d0;
-    border-radius:4px;
-    -webkit-border-radius:4px;
-    -moz-border-radius:4px;
-    box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
-    -webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
-    -moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
-} */
+
   .input{
     display: flex;
     align-items: center;
@@ -340,17 +344,6 @@
     cursor: pointer;
   }
   
-  #guessHolder {
-    color: antiquewhite;
-  }
-/*   
-  .wrapper{
-    display: flexbox;
-    align-items: center;
-    justify-content: center;
-    width: 75%;
-    margin: auto
-  } */
   .headers-wrapper,
 .feedback-wrapper {
     display: grid;
@@ -363,9 +356,38 @@
     justify-content: center;
 }
 
+.globe {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 500px;
+	width: 500px;
+	margin-top: 4em;
+}
+
+.image {
+    /* margin:-60px 0 0 -60px; */
+	height: 600px;
+	-webkit-animation:spin 30s linear infinite;
+    -moz-animation:spin 30s linear infinite;
+    animation:spin 30s linear infinite;
+}
+@-moz-keyframes spin { 
+    100% { -moz-transform: rotate(360deg); } 
+}
+@-webkit-keyframes spin { 
+    100% { -webkit-transform: rotate(360deg); } 
+}
+@keyframes spin { 
+    100% { 
+        -webkit-transform: rotate(360deg); 
+        transform:rotate(360deg); 
+    } 
+}
+
 .guessStuff {
   font-size: clamp(1rem, 1vw, 1.5rem);
-  color: #011844;
+  color: #011444;
     text-align: center;
     display: flex;
     align-items: center;
@@ -381,13 +403,6 @@
     justify-content: center;
 }
 
-  .feedback-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-	text-align: center;
-  }
- 
   p{
     margin: auto;
     width: 50%;
@@ -400,6 +415,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    /* padding: .5em; */
     /* grid-row: 1 / span 12; */
     text-align: center;
   }
@@ -451,28 +467,6 @@
     justify-content: flex-end;
     width: 30%;
     gap: 1em;
-}
-
-/* #guessTotal {
-    text-align: left;
-    color: antiquewhite;
-    width: 25%;
-} */
-
-  
-  #showAnswer {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    
-  }
-
-
-.guessCounter {
-	color: antiquewhite;
-	/* position: absolute;
-	top: 15px;
-	left: 15px; */
 }
 
 
